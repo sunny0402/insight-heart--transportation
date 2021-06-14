@@ -25,9 +25,8 @@
     <link rel="stylesheet" href="{{asset('template/plugins/c3/c3.min.css')}}">
     <link rel="stylesheet" href="{{asset('template/plugins/owl.carousel/dist/assets/owl.carousel.min.css')}}">
     <link rel="stylesheet" href="{{asset('template/plugins/owl.carousel/dist/assets/owl.theme.default.min.css')}}">
-    <link rel="stylesheet" href="dist/css/theme.min.css')}}">
-    <script src="{{asset('template/src/js/vendor/modernizr-2.8.3.min.js')}}">
-    </script>
+    <link rel="stylesheet" href="{{asset('template/dist/css/theme.min.css')}}">
+    <script src="{{asset('template/src/js/vendor/modernizr-2.8.3.min.js')}}"></script>
 </head>
 
 <body>
@@ -107,7 +106,7 @@
                         </div>
                         <button type="button" class="nav-link ml-10" id="apps_modal_btn" data-toggle="modal" data-target="#appsModal"><i class="ik ik-grid"></i></button>
                         <div class="dropdown">
-                            <a class="dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img class="avatar" src="{{asset('template/img/user.jpg')}}" alt=""></a>
+                            <a class="dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img class="avatar" src="img/user.jpg" alt=""></a>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
                                 <a class="dropdown-item" href="profile.html"><i class="ik ik-user dropdown-icon"></i> Profile</a>
                                 <a class="dropdown-item" href="#"><i class="ik ik-settings dropdown-icon"></i> Settings</a>
@@ -143,84 +142,84 @@
                                 <a href="index.html"><i class="ik ik-bar-chart-2"></i><span>Dashboard</span></a>
                             </div>
                             <div class="nav-item">
-                                <a href="{{asset('template/pages/navbar.html')}}"><i class="ik ik-menu"></i><span>Navigation</span> <span class="badge badge-success">New</span></a>
+                                <a href="pages/navbar.html"><i class="ik ik-menu"></i><span>Navigation</span> <span class="badge badge-success">New</span></a>
                             </div>
                             <div class="nav-item has-sub">
                                 <a href="javascript:void(0)"><i class="ik ik-layers"></i><span>Widgets</span> <span class="badge badge-danger">150+</span></a>
                                 <div class="submenu-content">
-                                    <a href="{{asset('template/pages/widgets.html" class="menu-item">Basic</a>
-                                    <a href="{{asset('template/pages/widget-statistic.html" class="menu-item">Statistic</a>
-                                    <a href="{{asset('template/pages/widget-data.html" class="menu-item">Data</a>
-                                    <a href="{{asset('template/pages/widget-chart.html" class="menu-item">Chart Widget</a>
+                                    <a href="pages/widgets.html" class="menu-item">Basic</a>
+                                    <a href="pages/widget-statistic.html" class="menu-item">Statistic</a>
+                                    <a href="pages/widget-data.html" class="menu-item">Data</a>
+                                    <a href="pages/widget-chart.html" class="menu-item">Chart Widget</a>
                                 </div>
                             </div>
                             <div class="nav-lavel">UI Element</div>
                             <div class="nav-item has-sub">
                                 <a href="#"><i class="ik ik-box"></i><span>Basic</span></a>
                                 <div class="submenu-content">
-                                    <a href="{{asset('template/pages/ui/alerts.html')}}" class="menu-item">Alerts</a>
-                                    <a href="{{asset('template/pages/ui/badges.html')}}" class="menu-item">Badges</a>
-                                    <a href="{{asset('template/pages/ui/buttons.html')}}" class="menu-item">Buttons</a>
-                                    <a href="{{asset('template/pages/ui/navigation.html')}}" class="menu-item">Navigation</a>
+                                    <a href="pages/ui/alerts.html" class="menu-item">Alerts</a>
+                                    <a href="pages/ui/badges.html" class="menu-item">Badges</a>
+                                    <a href="pages/ui/buttons.html" class="menu-item">Buttons</a>
+                                    <a href="pages/ui/navigation.html" class="menu-item">Navigation</a>
                                 </div>
                             </div>
                             <div class="nav-item has-sub">
                                 <a href="#"><i class="ik ik-gitlab"></i><span>Advance</span> <span class="badge badge-success">New</span></a>
                                 <div class="submenu-content">
-                                    <a href="{{asset('template/pages/ui/modals.html')}}" class="menu-item">Modals</a>
-                                    <a href="{{asset('template/pages/ui/notifications.html')}}" class="menu-item">Notifications</a>
-                                    <a href="{{asset('template/pages/ui/carousel.html')}}" class="menu-item">Slider</a>
-                                    <a href="{{asset('template/pages/ui/range-slider.html')}}" class="menu-item">Range Slider</a>
-                                    <a href="{{asset('template/pages/ui/rating.html')}}" class="menu-item">Rating</a>
+                                    <a href="pages/ui/modals.html" class="menu-item">Modals</a>
+                                    <a href="pages/ui/notifications.html" class="menu-item">Notifications</a>
+                                    <a href="pages/ui/carousel.html" class="menu-item">Slider</a>
+                                    <a href="pages/ui/range-slider.html" class="menu-item">Range Slider</a>
+                                    <a href="pages/ui/rating.html" class="menu-item">Rating</a>
                                 </div>
                             </div>
                             <div class="nav-item has-sub">
                                 <a href="#"><i class="ik ik-package"></i><span>Extra</span></a>
                                 <div class="submenu-content">
-                                    <a href="{{asset('template/pages/ui/session-timeout.html')}}" class="menu-item">Session Timeout</a>
+                                    <a href="pages/ui/session-timeout.html" class="menu-item">Session Timeout</a>
                                 </div>
                             </div>
                             <div class="nav-item">
-                                <a href="{{asset('template/pages/ui/icons.html')}}"><i class="ik ik-command"></i><span>Icons</span></a>
+                                <a href="pages/ui/icons.html"><i class="ik ik-command"></i><span>Icons</span></a>
                             </div>
                             <div class="nav-lavel">Forms</div>
                             <div class="nav-item has-sub">
                                 <a href="#"><i class="ik ik-edit"></i><span>Forms</span></a>
                                 <div class="submenu-content">
-                                    <a href="{{asset('template/pages/form-components.html')}}" class="menu-item">Components</a>
-                                    <a href="{{asset('template/pages/form-addon.html')}}" class="menu-item">Add-On</a>
-                                    <a href="{{asset('template/pages/form-advance.html')}}" class="menu-item">Advance</a>
+                                    <a href="pages/form-components.html" class="menu-item">Components</a>
+                                    <a href="pages/form-addon.html" class="menu-item">Add-On</a>
+                                    <a href="pages/form-advance.html" class="menu-item">Advance</a>
                                 </div>
                             </div>
                             <div class="nav-item">
-                                <a href="{{asset('template/pages/form-picker.html')}}"><i class="ik ik-terminal"></i><span>Form Picker</span> <span class="badge badge-success">New</span></a>
+                                <a href="pages/form-picker.html"><i class="ik ik-terminal"></i><span>Form Picker</span> <span class="badge badge-success">New</span></a>
                             </div>
 
                             <div class="nav-lavel">Tables</div>
                             <div class="nav-item">
-                                <a href="{{asset('template/pages/table-bootstrap.html')}}"><i class="ik ik-credit-card"></i><span>Bootstrap Table</span></a>
+                                <a href="pages/table-bootstrap.html"><i class="ik ik-credit-card"></i><span>Bootstrap Table</span></a>
                             </div>
                             <div class="nav-item">
-                                <a href="{{asset('template/pages/table-datatable.html')}}"><i class="ik ik-inbox"></i><span>Data Table</span></a>
+                                <a href="pages/table-datatable.html"><i class="ik ik-inbox"></i><span>Data Table</span></a>
                             </div>
 
                             <div class="nav-lavel">Charts</div>
                             <div class="nav-item has-sub">
                                 <a href="#"><i class="ik ik-pie-chart"></i><span>Charts</span> <span class="badge badge-success">New</span></a>
                                 <div class="submenu-content">
-                                    <a href="{{asset('template/pages/charts-chartist.html')}}" class="menu-item active">Chartist</a>
-                                    <a href="{{asset('template/pages/charts-flot.html')}}" class="menu-item">Flot</a>
-                                    <a href="{{asset('template/pages/charts-knob.html')}}" class="menu-item">Knob</a>
-                                    <a href="{{asset('template/pages/charts-amcharts.html')}}" class="menu-item">Amcharts</a>
+                                    <a href="pages/charts-chartist.html" class="menu-item active">Chartist</a>
+                                    <a href="pages/charts-flot.html" class="menu-item">Flot</a>
+                                    <a href="pages/charts-knob.html" class="menu-item">Knob</a>
+                                    <a href="pages/charts-amcharts.html" class="menu-item">Amcharts</a>
                                 </div>
                             </div>
 
                             <div class="nav-lavel">Apps</div>
                             <div class="nav-item">
-                                <a href="{{asset('template/pages/calendar.html')}}"><i class="ik ik-calendar"></i><span>Calendar</span></a>
+                                <a href="pages/calendar.html"><i class="ik ik-calendar"></i><span>Calendar</span></a>
                             </div>
                             <div class="nav-item">
-                                <a href="{{asset('template/pages/taskboard.html')}}"><i class="ik ik-server"></i><span>Taskboard</span></a>
+                                <a href="pages/taskboard.html"><i class="ik ik-server"></i><span>Taskboard</span></a>
                             </div>
 
                             <div class="nav-lavel">Pages</div>
@@ -895,7 +894,7 @@
                                                 <span class="custom-control-label">&nbsp;</span>
                                             </label>
                                         </td>
-                                        <td><img src="img/users/3.jpg" class="table-user-thumb" alt=""></td>
+                                        <td><img src="{{asset('template/img/users/3.jpg')}}" class="table-user-thumb" alt=""></td>
                                         <td>Rhona Davidson</td>
                                         <td>Integration Specialist</td>
                                         <td>Tokyo</td>
@@ -910,7 +909,7 @@
                                                 <span class="custom-control-label">&nbsp;</span>
                                             </label>
                                         </td>
-                                        <td><img src="img/users/4.jpg" class="table-user-thumb" alt=""></td>
+                                        <td><img src="{{asset('template/img/users/4.jpg')}}" class="table-user-thumb" alt=""></td>
                                         <td>Colleen Hurst</td>
                                         <td>Javascript Developer</td>
                                         <td>San Francisco</td>
@@ -940,37 +939,37 @@
                         <div class="list-group row">
                             <a href="javascript:void(0)" class="list-group-item" data-chat-user="Gene Newman">
                                 <figure class="user--online">
-                                    <img src="img/users/1.jpg" class="rounded-circle" alt="">
+                                    <img src="{{asset('template/img/users/1.jpg')}}" class="rounded-circle" alt="">
                                 </figure><span><span class="name">Gene Newman</span> <span class="username">@gene_newman</span> </span>
                             </a>
                             <a href="javascript:void(0)" class="list-group-item" data-chat-user="Billy Black">
                                 <figure class="user--online">
-                                    <img src="img/users/2.jpg" class="rounded-circle" alt="">
+                                    <img src="{{asset('template/img/users/2.jpg')}}" class="rounded-circle" alt="">
                                 </figure><span><span class="name">Billy Black</span> <span class="username">@billyblack</span> </span>
                             </a>
                             <a href="javascript:void(0)" class="list-group-item" data-chat-user="Herbert Diaz">
                                 <figure class="user--online">
-                                    <img src="img/users/3.jpg" class="rounded-circle" alt="">
+                                    <img src="{{asset('template/img/users/3.jpg')}}" class="rounded-circle" alt="">
                                 </figure><span><span class="name">Herbert Diaz</span> <span class="username">@herbert</span> </span>
                             </a>
                             <a href="javascript:void(0)" class="list-group-item" data-chat-user="Sylvia Harvey">
                                 <figure class="user--busy">
-                                    <img src="img/users/4.jpg" class="rounded-circle" alt="">
+                                    <img src="{{asset('template/img/users/4.jpg')}}" class="rounded-circle" alt="">
                                 </figure><span><span class="name">Sylvia Harvey</span> <span class="username">@sylvia</span> </span>
                             </a>
                             <a href="javascript:void(0)" class="list-group-item active" data-chat-user="Marsha Hoffman">
                                 <figure class="user--busy">
-                                    <img src="img/users/5.jpg" class="rounded-circle" alt="">
+                                    <img src="{{asset('template/img/users/5.jpg')}}" class="rounded-circle" alt="">
                                 </figure><span><span class="name">Marsha Hoffman</span> <span class="username">@m_hoffman</span> </span>
                             </a>
                             <a href="javascript:void(0)" class="list-group-item" data-chat-user="Mason Grant">
                                 <figure class="user--offline">
-                                    <img src="img/users/1.jpg" class="rounded-circle" alt="">
+                                    <img src="{{asset('template/img/users/1.jpg')}}" class="rounded-circle" alt="">
                                 </figure><span><span class="name">Mason Grant</span> <span class="username">@masongrant</span> </span>
                             </a>
                             <a href="javascript:void(0)" class="list-group-item" data-chat-user="Shelly Sullivan">
                                 <figure class="user--offline">
-                                    <img src="img/users/2.jpg" class="rounded-circle" alt="">
+                                    <img src="{{asset('template/img/users/2.jpg')}}" class="rounded-circle" alt="">
                                 </figure><span><span class="name">Shelly Sullivan</span> <span class="username">@shelly</span></span>
                             </a>
                         </div>
@@ -991,7 +990,7 @@
                                 <div class="message media reply">
                                     <figure class="user--online">
                                         <a href="#">
-                                            <img src="img/users/3.jpg" class="rounded-circle" alt="">
+                                            <img src="{{asset('template/img/users/3.jpg')}}" class="rounded-circle" alt="">
                                         </a>
                                     </figure>
                                     <div class="message-body media-body">
@@ -1001,7 +1000,7 @@
                                 <div class="message media">
                                     <figure class="user--online">
                                         <a href="#">
-                                            <img src="img/users/1.jpg" class="rounded-circle" alt="">
+                                            <img src="{{asset('template/img/users/1.jpg')}}" class="rounded-circle" alt="">
                                         </a>
                                     </figure>
                                     <div class="message-body media-body">
@@ -1011,7 +1010,7 @@
                                 <div class="message media reply">
                                     <figure class="user--offline">
                                         <a href="#">
-                                            <img src="img/users/5.jpg" class="rounded-circle" alt="">
+                                            <img src="{{asset('template/img/users/5.jpg')}}" class="rounded-circle" alt="">
                                         </a>
                                     </figure>
                                     <div class="message-body media-body">
@@ -1022,7 +1021,7 @@
                                 <div class="message media">
                                     <figure class="user--online">
                                         <a href="#">
-                                            <img src="img/users/1.jpg" class="rounded-circle" alt="">
+                                            <img src="{{asset('template/img/users/1.jpg')}}" class="rounded-circle" alt="">
                                         </a>
                                     </figure>
                                     <div class="message-body media-body">
@@ -1032,7 +1031,7 @@
                                 <div class="message media reply">
                                     <figure class="user--busy">
                                         <a href="#">
-                                            <img src="img/users/5.jpg" class="rounded-circle" alt="">
+                                            <img src="{{asset('template/img/users/5.jpg')}}" class="rounded-circle" alt="">
                                         </a>
                                     </figure>
                                     <div class="message-body media-body">
@@ -1042,7 +1041,7 @@
                                 <div class="message media">
                                     <figure class="user--online">
                                         <a href="#">
-                                            <img src="img/users/1.jpg" class="rounded-circle" alt="">
+                                            <img src="{{asset('template/img/users/1.jpg')}}" class="rounded-circle" alt="">
                                         </a>
                                     </figure>
                                     <div class="message-body media-body">
