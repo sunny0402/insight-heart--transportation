@@ -18,6 +18,19 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
+
+
+            $table->integer('role_id');
+            $table->string('address')->nullable();
+            $table->string('phone_number')->nullable();
+            $table->string('department')->nullable();
+            // images for the drivers not clients
+            $table->string('image')->nullable();
+            // for drivers education field: area, experience, rating ...
+            $table->string('education')->nullable();
+            $table->string('description')->nullable();
+
+
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
