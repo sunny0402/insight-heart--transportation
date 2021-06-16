@@ -9,7 +9,7 @@
                 <i class="ik ik-edit bg-blue"></i>
                 <div class="d-inline">
                     <h5>Drivers</h5>
-                    <span>lorem ipsum dolor sit amet, consectetur adipisicing elit</span>
+                    <span>Please input driver information.</span>
                 </div>
             </div>
         </div>
@@ -34,16 +34,26 @@
                 <h3>Add Driver</h3>
             </div>
             <div class="card-body">
-                <form class="forms-sample">
+                <form class="forms-sample" action="{{ route('driver.store') }}" method="post" enctype="multipart/form-data">@csrf
                     <div class="row">
                         <div class="col-lg-6">
                             <label for="">Full name</label>
-                            <!-- name same as in db -->
-                            <input type="text" name="name" class="form-control" placeholder="driver name">
+                            <!-- html name attribute same as column in db -->
+                            <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" placeholder="driver name">
+                            @error('name')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
                         </div>
                         <div class="col-lg-6">
                             <label for="">Email</label>
-                            <input type="email" name="email" class="form-control" placeholder="driver email">
+                            <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" placeholder="driver email">
+                            @error('email')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
                         </div>
                     </div>
 
@@ -51,27 +61,45 @@
                         <div class="col-lg-6">
                             <label for="">Password</label>
                             <!-- name same as in db -->
-                            <input type="password" name="password" class="form-control" placeholder="driver password">
+                            <input type="password" name="password" class="form-control @error('password') is-invalid @enderror" placeholder="driver password">
+                            @error('password')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
                         </div>
+
                         <div class="col-lg-6">
-                            <label for="">Gender</label>
-                            <select name="gender" class="form-control">
-                                <option value="male">Male</option>
-                                <option value="female">Female</option>
-                                <option value="other">Decline to answer</option>
-                            </select>
+                            <label for="">License Plate</label>
+                            <input type="text" class="form-control @error('license_plate') is-invalid @enderror">
+                            @error('license_plate')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="col-lg-6">
-                            <label for="">Education</label>
+                            <label for="">Vehicle Info</label>
                             <!-- name same as in db -->
-                            <input type="text" name="education" class="form-control" placeholder="driver skills">
+                            <input type="text" name="vehicle_info" class="form-control @error('education') is-invalid @enderror" placeholder="vehicle make, model, color">
+                            @error('vehicle_info')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
                         </div>
+
                         <div class="col-lg-6">
                             <label for="">Address</label>
-                            <input type="text" name="address" class="form-control" placeholder="driver home address">
+                            <input type="text" name="address" class="form-control @error('address') is-invalid @enderror" placeholder="driver home address">
+                            @error('address')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
                         </div>
                     </div>
 
@@ -79,20 +107,76 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="">Specialist</label>
-                                <input type="text" name="department" class="form-control">
-
+                                <label for="">Driver Region</label>
+                                <input type="text" name="region" class="form-control @error('department') is-invalid @enderror" placeholder="Toronto, Mississauga, Brampton,Vuaghan, Markham, Scarborough">
+                                @error('region')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
                             </div>
                         </div>
 
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="">Phone number</label>
-                                <input type="text" name="phone_number" class="form-control">
+                                <input type="text" name="phone_number" class="form-control @error('phone_number') is-invalid @enderror" placeholder="416 123 4567">
+                                @error('phone_number')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+                        </div>
+                    </div>
 
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Driver Photo</label>
+                                <div class="col-md-6">
+                                    <input type="file" name="image" class="form-control file-upload-info @error('image') is-invalid @enderror" placeholder="Upload Image">
+                                    <span class="input-group-append">
+                                    </span>
+                                    @error('name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
                             </div>
                         </div>
 
+                        <div class="col-md-6">
+                            <label for="">Role</label>
+                            <select name="role_id" class="form-control @error('role') is-invalid @enderror">
+                                <option value="">Please Select Role</option>
+                                @foreach(App\Models\Role::where('name','!=','client')->get() as $role)
+                                <option value="{{$role->id}}">
+                                    {{$role->name}}
+                                </option>
+                                @endforeach
+                            </select>
+                            @error('role_id')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleTextarea1">Bio</label>
+                        <textarea class="form-control" name="description" placeholder="Please introduce yourself to the community" id="exampleTextarea1" rows="4"></textarea>
+                        @error('description')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+                    </div>
+
+                    <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                    <button class="btn btn-light">Cancel</button>
 
                 </form>
             </div>

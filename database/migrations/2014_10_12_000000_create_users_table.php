@@ -23,11 +23,11 @@ class CreateUsersTable extends Migration
             $table->integer('role_id');
             $table->string('address')->nullable();
             $table->string('phone_number')->nullable();
-            $table->string('department')->nullable();
+            $table->string('region')->nullable();
             // images for the drivers not clients
             $table->string('image')->nullable();
             // for drivers education field: area, experience, rating ...
-            $table->string('education')->nullable();
+            $table->string('vehicle_info')->nullable();
             $table->string('description')->nullable();
 
 

@@ -11,6 +11,8 @@ class DriverController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    //  route example: driver/
     public function index()
     {
         //
@@ -21,6 +23,8 @@ class DriverController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    //  route example: driver/create
     public function create()
     {
         return view('admin.driver.create');
@@ -34,7 +38,14 @@ class DriverController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // get everything from the form and display
+        // dd($request->all());
+
+        $this->validate($request, [
+            'name' => 'required',
+            'email' => 'required|unique:users',
+            'password' => 'required|min:6|max:25',
+        ]);
     }
 
     /**
@@ -43,6 +54,8 @@ class DriverController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+    //  route example: driver/1
     public function show($id)
     {
         //
@@ -54,6 +67,8 @@ class DriverController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+    //  route example: driver/1/edit
     public function edit($id)
     {
         //
