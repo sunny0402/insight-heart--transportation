@@ -1,5 +1,9 @@
 ## Notes
 
+## TODO
+
+search TODO in code to find incomplete tasks
+
 php artisan serve
 
 https://github.com/ThemeKit/BootstrapAdmin

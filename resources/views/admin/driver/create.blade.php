@@ -28,6 +28,11 @@
 </div>
 
 <div class="row justify-content-center">
+    @if(Session::has('message'))
+    <div class="alert alert-success">
+        {{Session::get('message')}}
+    </div>
+    @endif
     <div class="col-lg-10">
         <div class="card">
             <div class="card-header">
@@ -71,7 +76,7 @@
 
                         <div class="col-lg-6">
                             <label for="">License Plate</label>
-                            <input type="text" class="form-control @error('license_plate') is-invalid @enderror">
+                            <input type="text" class="form-control @error('license_plate') is-invalid @enderror" name="license_plate">
                             @error('license_plate')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -84,7 +89,7 @@
                         <div class="col-lg-6">
                             <label for="">Vehicle Info</label>
                             <!-- name same as in db -->
-                            <input type="text" name="vehicle_info" class="form-control @error('education') is-invalid @enderror" placeholder="vehicle make, model, color">
+                            <input type="text" name="vehicle_info" class="form-control @error('vehicle_info') is-invalid @enderror" placeholder="vehicle make, model, color">
                             @error('vehicle_info')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -108,7 +113,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="">Driver Region</label>
-                                <input type="text" name="region" class="form-control @error('department') is-invalid @enderror" placeholder="Toronto, Mississauga, Brampton,Vuaghan, Markham, Scarborough">
+                                <input type="text" name="region" class="form-control @error('region') is-invalid @enderror" placeholder="Toronto, Mississauga, Brampton,Vuaghan, Markham, Scarborough">
                                 @error('region')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -149,7 +154,7 @@
 
                         <div class="col-md-6">
                             <label for="">Role</label>
-                            <select name="role_id" class="form-control @error('role') is-invalid @enderror">
+                            <select name="role_id" class="form-control @error('role_id') is-invalid @enderror">
                                 <option value="">Please Select Role</option>
                                 @foreach(App\Models\Role::where('name','!=','client')->get() as $role)
                                 <option value="{{$role->id}}">
@@ -167,7 +172,7 @@
 
                     <div class="form-group">
                         <label for="exampleTextarea1">Bio</label>
-                        <textarea class="form-control" name="description" placeholder="Please introduce yourself to the community" id="exampleTextarea1" rows="4"></textarea>
+                        <textarea class="form-control @error('description') is-invalid @enderror" name="description" placeholder="Please introduce yourself to the community" id="exampleTextarea1" rows="4"></textarea>
                         @error('description')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
