@@ -16,7 +16,8 @@ class DriverController extends Controller
     //  route example: driver/
     public function index()
     {
-        //
+        $users = User::get();
+        return view('admin.driver.index', compact('users'));
     }
 
     /**

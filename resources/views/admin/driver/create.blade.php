@@ -44,7 +44,7 @@
                         <div class="col-lg-6">
                             <label for="">Full name</label>
                             <!-- html name attribute same as column in db -->
-                            <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" placeholder="driver name">
+                            <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" value="{{old('name')}}" placeholder="First Name Last Name">
                             @error('name')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -53,7 +53,7 @@
                         </div>
                         <div class="col-lg-6">
                             <label for="">Email</label>
-                            <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" placeholder="driver email">
+                            <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" value="{{old('email')}}" placeholder="driver email">
                             @error('email')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -66,7 +66,7 @@
                         <div class="col-lg-6">
                             <label for="">Password</label>
                             <!-- name same as in db -->
-                            <input type="password" name="password" class="form-control @error('password') is-invalid @enderror" placeholder="driver password">
+                            <input type="password" name="password" class="form-control @error('password') is-invalid @enderror" placeholder="minimum 8 characters">
                             @error('password')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -76,7 +76,7 @@
 
                         <div class="col-lg-6">
                             <label for="">License Plate</label>
-                            <input type="text" class="form-control @error('license_plate') is-invalid @enderror" name="license_plate">
+                            <input type="text" class="form-control @error('license_plate') is-invalid @enderror" name="license_plate" value="{{old('license_plate')}}" placeholder="CMTY 217">
                             @error('license_plate')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -89,7 +89,7 @@
                         <div class="col-lg-6">
                             <label for="">Vehicle Info</label>
                             <!-- name same as in db -->
-                            <input type="text" name="vehicle_info" class="form-control @error('vehicle_info') is-invalid @enderror" placeholder="vehicle make, model, color">
+                            <input type="text" name="vehicle_info" class="form-control @error('vehicle_info') is-invalid @enderror" value="{{old('vehicle_info')}}" placeholder="vehicle make, model, color">
                             @error('vehicle_info')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -99,7 +99,7 @@
 
                         <div class="col-lg-6">
                             <label for="">Address</label>
-                            <input type="text" name="address" class="form-control @error('address') is-invalid @enderror" placeholder="driver home address">
+                            <input type="text" name="address" class="form-control @error('address') is-invalid @enderror" value="{{old('address')}}" placeholder="driver home address">
                             @error('address')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -113,7 +113,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="">Driver Region</label>
-                                <input type="text" name="region" class="form-control @error('region') is-invalid @enderror" placeholder="Toronto, Mississauga, Brampton,Vuaghan, Markham, Scarborough">
+                                <input type="text" name="region" class="form-control @error('region') is-invalid @enderror" value="{{old('region')}}" placeholder="Toronto, Mississauga, Brampton,Vuaghan, Markham, Scarborough">
                                 @error('region')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -125,7 +125,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="">Phone number</label>
-                                <input type="text" name="phone_number" class="form-control @error('phone_number') is-invalid @enderror" placeholder="416 123 4567">
+                                <input type="text" name="phone_number" class="form-control @error('phone_number') is-invalid @enderror" value="{{old('phone_number')}}" placeholder="416 123 4567">
                                 @error('phone_number')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -172,7 +172,9 @@
 
                     <div class="form-group">
                         <label for="exampleTextarea1">Bio</label>
-                        <textarea class="form-control @error('description') is-invalid @enderror" name="description" placeholder="Please introduce yourself to the community" id="exampleTextarea1" rows="4"></textarea>
+                        <textarea class="form-control @error('description') is-invalid @enderror" name="description" placeholder="Please introduce yourself to the community" id="exampleTextarea1" rows="4">
+                        {{old('description')}}
+                        </textarea>
                         @error('description')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>

@@ -1,8 +1,16 @@
-## Notes
+## About
+
+Transportation system.
+Current routes:
+/driver/create
+/driver
 
 ## TODO
 
-search TODO in code to find incomplete tasks
+search TODO to find incomplete tasks
+Currently the styles use Bootstrap 4.6.0
+
+## Notes
 
 php artisan serve
 
@@ -55,3 +63,36 @@ Users table:
 department column changed to region column
 education column changed to vehicle_info (make, model, color)
 gender changed to license_plate
+
+asset('images') targets the public directory: "app/public/images"
+
+Bootstrap Modal
+https://getbootstrap.com/docs/5.0/components/modal/
+
+Give the User model access to the role information in the roles table.
+
+```
+//App\Models\User.php
+    public function role()
+    {
+        // id from the roles table is a foreign key, role_id, in users table
+        return $this->hasOne('App\Models\Role', 'id', 'role_id');
+    }
+
+//then can grab the role name
+
+//App\Http\Controllers\DriverController.php
+
+public function index()
+{
+    $users = User::get();
+    return view('admin.driver.index', compact('users'));
+}
+
+
+
+//resources\views\admin\driver\index.blade.php
+ @foreach($users as $user)
+    {{$user->role->name}}
+@endforeach
+```
