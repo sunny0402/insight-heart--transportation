@@ -16,7 +16,8 @@ class DriverController extends Controller
     //  route example: driver/
     public function index()
     {
-        $users = User::get();
+        // view drivers and admin but not clients
+        $users = User::where('role_id', '!=', 3)->get();
         return view('admin.driver.index', compact('users'));
     }
 
@@ -44,10 +45,8 @@ class DriverController extends Controller
         // dd($request->all());
         $this->validateStore($request);
         $data = $request->all();
-        $image = $request->file('image');
-        $name = $image->hashName();
-        $destination = public_path('/images');
-        $image->move($destination, $name);
+        $name = (new User)->userAvatar($request);
+
 
         // append to image to data then store
         $data['image'] = $name;
@@ -68,7 +67,9 @@ class DriverController extends Controller
     //  route example: driver/1
     public function show($id)
     {
-        //
+        // dd($id);
+        $user = User::find($id);
+        return view('admin.driver.delete', compact('user'));
     }
 
     /**
@@ -81,7 +82,11 @@ class DriverController extends Controller
     //  route example: driver/1/edit
     public function edit($id)
     {
-        //
+        // find which driver to edit
+        $user = User::find($id);
+        // dd($user);
+        // compact creates array from variable and values
+        return view('admin.driver.edit', compact('user'));
     }
 
     /**
@@ -93,7 +98,34 @@ class DriverController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validateUpdate($request, $id);
+
+        $data = $request->all();
+        $user = User::find($id);
+
+        //here $imageName is the image currently in the database
+        $imageName = $user->image;
+        $userPassword = $user->password;
+        // see if image has been uploaded (see if it is in the request)
+        if ($request->hasFile('image')) {
+            $imageName = (new User)->userAvatar($request);
+            unlink(public_path('images/' . $user->image));
+        }
+        // if new image has NOT been uploaded
+        $data['image'] = $imageName;
+        // if user supplied password
+        if ($request->password) {
+            $data['password'] = bcrypt($request->password);
+        }
+        //if user has not provided new password
+        else {
+            $data['password'] = $userPassword;
+        }
+
+        // insert updated data into db
+        $user->update($data);
+
+        return redirect()->route('driver.index')->with('message', 'Driver updated successfully');
     }
 
     /**
@@ -104,11 +136,20 @@ class DriverController extends Controller
      */
     public function destroy($id)
     {
-        //
+        // cannot delete yourself
+        if (auth()->user()->id == $id) {
+            abort(401);
+        }
+        $user = User::find($id);
+        $userDelete = $user->delete();
+        // if deletion succesful remove picture
+        if ($userDelete) {
+            unlink(public_path('images/' . $user->image));
+        }
+        return redirect()->route('driver.index')->with('message', 'Doctor deleted successfully');
     }
     public function validateStore($request)
     {
-        // TODO: not getting validation for all fields
         return $this->validate($request, [
             'name' => 'required',
             'email' => 'required|unique:users',
@@ -119,6 +160,25 @@ class DriverController extends Controller
             'region' => 'required',
             'phone_number' => 'required|numeric',
             'image' => 'required|mimes:jpeg,jpg,png',
+            'role_id' => 'required',
+            'description' => 'required|min:25'
+        ]);
+    }
+
+    // password field left blank, password can remain or new typed in; email needs to be unique
+    // if update same email pass id of user
+    // 'email' => 'required|unique:users,email,' . $id
+    public function validateUpdate($request, $id)
+    {
+        return $this->validate($request, [
+            'name' => 'required',
+            'email' => 'required|unique:users,email,' . $id,
+            'license_plate' => 'required',
+            'vehicle_info' => 'required',
+            'address' => 'required',
+            'region' => 'required',
+            'phone_number' => 'required|numeric',
+            'image' => 'mimes:jpeg,jpg,png',
             'role_id' => 'required',
             'description' => 'required|min:25'
         ]);

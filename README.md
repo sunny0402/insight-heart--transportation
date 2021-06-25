@@ -4,11 +4,13 @@ Transportation system.
 Current routes:
 /driver/create
 /driver
+/driver/id/edit (/driver/72/edit)
 
 ## TODO
 
 search TODO to find incomplete tasks
 Currently the styles use Bootstrap 4.6.0
+Add driver form should have dropdown selection. This will also impact edit driver form.
 
 ## Notes
 

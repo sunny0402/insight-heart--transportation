@@ -31,6 +31,12 @@
 
 <div class="row">
     <div class="col-md-12">
+        <!-- after update redirected to index.blade.php -->
+        @if(Session::has('message'))
+        <div class="alert bg-success alert-success text-white">
+            {{Session::get('message')}}
+        </div>
+        @endif
         <div class="card">
             <div class="card-header">
                 <h3>Data Table</h3>
@@ -64,8 +70,8 @@
                                 <div class="table-actions">
                                     <a href="#" data-toggle="modal" data-target="#exampleModal{{$user->id}}">
                                         <i class="ik ik-eye"></i></a>
-                                    <a href="#"><i class="ik ik-edit-2"></i></a>
-                                    <a href="#"><i class="ik ik-trash-2"></i></a>
+                                    <a href="{{route('driver.edit',[$user->id])}}"><i class="ik ik-edit-2"></i></a>
+                                    <a href="{{route('driver.show',[$user->id])}}"><i class="ik ik-trash-2"></i></a>
                                 </div>
                             </td>
                             <!-- x here so that <td> match <th> -->

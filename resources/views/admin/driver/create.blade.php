@@ -28,12 +28,13 @@
 </div>
 
 <div class="row justify-content-center">
-    @if(Session::has('message'))
-    <div class="alert alert-success">
-        {{Session::get('message')}}
-    </div>
-    @endif
     <div class="col-lg-10">
+        @if(Session::has('message'))
+        <div class="alert bg-success alert-success text-white">
+            {{Session::get('message')}}
+        </div>
+        @endif
+        <!-- <div class="col-lg-10"> -->
         <div class="card">
             <div class="card-header">
                 <h3>Add Driver</h3>
