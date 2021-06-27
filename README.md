@@ -112,4 +112,4 @@ maintained by drivers ...
 No longer than 20 minutes
 6am to 10pm
 php artisan make:controller AppoitmentController -r
-php artisan make:model Appoitment -m
+php artisan make:model Appointment -m

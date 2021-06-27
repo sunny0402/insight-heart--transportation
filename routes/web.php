@@ -35,3 +35,5 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::group(['middleware' => ['auth', 'admin']], function () {
     Route::resource('driver', 'DriverController');
 });
+
+Route::resource('appoitment', 'AppointmentController');
