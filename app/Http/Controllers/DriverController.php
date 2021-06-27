@@ -16,6 +16,9 @@ class DriverController extends Controller
     //  route example: driver/
     public function index()
     {
+        // view currently logged in user
+        // dd(\Auth::user()->role->name);
+
         // view drivers and admin but not clients
         $users = User::where('role_id', '!=', 3)->get();
         return view('admin.driver.index', compact('users'));

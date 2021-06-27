@@ -28,4 +28,10 @@ Auth::routes();
 
 // Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::resource('driver', 'DriverController');
+
+// protect driver route
+// can only access if loggen in user is admin
+//protected routes: driver, driver/create, driver/edit, driver/delete
+Route::group(['middleware' => ['auth', 'admin']], function () {
+    Route::resource('driver', 'DriverController');
+});

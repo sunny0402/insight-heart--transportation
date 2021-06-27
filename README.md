@@ -14,6 +14,7 @@ Add driver form should have dropdown selection. This will also impact edit drive
 
 ## Notes
 
+Development server
 php artisan serve
 
 https://github.com/ThemeKit/BootstrapAdmin
@@ -98,3 +99,17 @@ public function index()
     {{$user->role->name}}
 @endforeach
 ```
+
+Middleware
+php artisan make:middleware Admin
+middleware so that driver and driver/create only accessed by middleware
+register middleware in Kernel.php
+
+php artisan make:middleware Driver
+
+Appoitments
+maintained by drivers ...
+No longer than 20 minutes
+6am to 10pm
+php artisan make:controller AppoitmentController -r
+php artisan make:model Appoitment -m
