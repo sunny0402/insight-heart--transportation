@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Appointment;
+use App\Models\Time;
 
 class AppointmentController extends Controller
 {
@@ -23,7 +25,7 @@ class AppointmentController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.appointment.create');
     }
 
     /**
@@ -34,7 +36,27 @@ class AppointmentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd($request->all());
+        $appointment = Appointment::create([
+            // currently logged in id of user
+            // user is a driver since only they can create appointments
+            'user_id' => auth()->user()->id,
+            'date' => $request->date
+        ]);
+
+        //display id of last inserted appointment
+        //dd($appointment->id);
+
+        foreach ($request->time as $time) {
+            Time::create([
+                // forein key which points to appointment table
+                'appointment_id' => $appointment->id,
+                'time' => $time,
+                // default set to 0 ... view migration file
+                // 'status' => 0
+            ]);
+        }
+        return redirect()->back()->with('message', 'Appointment created for' . $request->date);
     }
 
     /**

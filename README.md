@@ -113,3 +113,19 @@ No longer than 20 minutes
 6am to 10pm
 php artisan make:controller AppoitmentController -r
 php artisan make:model Appointment -m
+
+Appointments Table:
+appoitments can only be created by the driver
+so the user_id refers to a driver
+appointments: id/user_id/date
+
+make another table for the time of appointment
+status: 0 means appointment is still available
+times: id/appointment_id/status:0
+
+php artisan make:model Time -m
+after creating migration migrate
+php artisan migrate
+
+// forein key which points to appointment table
+\$table->integer('appointment_id');

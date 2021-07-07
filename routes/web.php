@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Support\Facades\Auth;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -36,4 +36,4 @@ Route::group(['middleware' => ['auth', 'admin']], function () {
     Route::resource('driver', 'DriverController');
 });
 
-Route::resource('appoitment', 'AppointmentController');
+Route::resource('appointment', 'AppointmentController');
