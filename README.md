@@ -14,6 +14,19 @@ Add driver form should have dropdown selection. This will also impact edit drive
 
 ## Notes
 
+Accounts For Testing
+
+Admin Accounts
+admin@mail.com
+12344321
+
+Driver Accounts
+driver1@mail.com
+driver1@mail.com
+
+driver2@mail.com
+driver2@mail.com
+
 Development server
 php artisan serve
 
@@ -129,3 +142,17 @@ php artisan migrate
 
 // forein key which points to appointment table
 \$table->integer('appointment_id');
+
+Appointment validation
+the same user_id should be able to create an appoitment for the same date/time
+different user_id is able to
+
+https://laravel.com/docs/8.x/validation#custom-validation-rules
+Adding Additional Where Clauses:
+For example, let's add a query condition that scopes the query to only search records that have an account_id column value of 1:
+
+"""
+'email' => Rule::unique('users')->where(function ($query) {
+    return $query->where('account_id', 1);
+})
+"""
