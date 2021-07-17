@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Appointment;
 use App\Models\Time;
-// use Illuminate\Support\Facades\Auth;
+//use Illuminate\Support\Facades\Auth;
 
 class AppointmentController extends Controller
 {
@@ -16,7 +16,7 @@ class AppointmentController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.appointment.index');
     }
 
     /**
@@ -107,5 +107,23 @@ class AppointmentController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    // based on date should get appointment id
+    // then get all time from Times table
+    public function check(Request $request)
+    {
+        $date = $request->date;
+        // user_id is that of the currently logged in user
+        // first() is to get first such record
+        $appointment = Appointment::where('date', $date)->where('user_id', auth()->user()->id)->first();
+
+        if (!$appointment) {
+            return redirect()->to('/appointment')->with('errmessage', 'Appointment has not been created for this date.');
+        }
+        $appointmentId = $appointment->id;
+        // times table has column appointment_id
+        $times = Time::where('appointment_id', $appointmentId)->get();
+        return view('admin.appointment.index', compact('times', 'appointmentId', 'date'));
     }
 }

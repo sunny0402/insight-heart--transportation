@@ -156,3 +156,8 @@ For example, let's add a query condition that scopes the query to only search re
     return $query->where('account_id', 1);
 })
 """
+
+## Laravel Notes
+
+How to pass data to views
+https://www.geeksforgeeks.org/different-ways-for-passing-data-to-view-in-laravel/
