@@ -109,8 +109,9 @@ class AppointmentController extends Controller
         //
     }
 
-    // based on date should get appointment id
-    // then get all time from Times table
+    // check if which time slots already taken for that date
+    // route for a looged in driver /appointment/check
+    // based on date should get appointment id then get all time slots from times table
     public function check(Request $request)
     {
         $date = $request->date;
@@ -124,6 +125,22 @@ class AppointmentController extends Controller
         $appointmentId = $appointment->id;
         // times table has column appointment_id
         $times = Time::where('appointment_id', $appointmentId)->get();
+        //return $times;
         return view('admin.appointment.index', compact('times', 'appointmentId', 'date'));
+    }
+
+    // update existing appoitment
+    public function updateTime(Request $request)
+    {
+        $appointmentId = $request->appointmentId;
+        // delete old time slots
+        $appointment = Time::where('appointment_id', $appointmentId)->delete();
+        //create new ones
+        foreach ($request->time as $time) {
+            Time::create([
+                'appointment_id' => $appointmentId,
+                'time' => $time
+            ]);
+        }
     }
 }
