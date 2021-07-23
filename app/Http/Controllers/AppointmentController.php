@@ -139,8 +139,10 @@ class AppointmentController extends Controller
         foreach ($request->time as $time) {
             Time::create([
                 'appointment_id' => $appointmentId,
-                'time' => $time
+                'time' => $time,
+                'status' => 0
             ]);
         }
+        return redirect()->route('appointment.index')->with('message', 'Availability updated!');
     }
 }

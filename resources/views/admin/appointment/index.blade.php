@@ -42,8 +42,8 @@
     <div class="alert alert-danger">
         {{$error}}
     </div>
-
     @endforeach
+
     <form action="{{route('appointment.check')}}" method="post">@csrf
         <div class="card">
             <div class="card-header">
