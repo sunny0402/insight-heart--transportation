@@ -36,7 +36,10 @@ Route::group(['middleware' => ['auth', 'admin']], function () {
     Route::resource('driver', 'DriverController');
 });
 
-Route::resource('appointment', 'AppointmentController');
-// this route will run the check method
-Route::post('/appointment/check', 'AppointmentController@check')->name('appointment.check');
-Route::post('/appointment/update', 'AppointmentController@updateTime')->name('update');
+// only driver can create check or update appointments
+Route::group(['middleware' => ['auth', 'driver']], function () {
+    Route::resource('appointment', 'AppointmentController');
+    // this route will run the check method
+    Route::post('/appointment/check', 'AppointmentController@check')->name('appointment.check');
+    Route::post('/appointment/update', 'AppointmentController@updateTime')->name('update');
+});

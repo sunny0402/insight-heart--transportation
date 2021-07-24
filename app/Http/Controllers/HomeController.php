@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Auth;
+use Illuminate\Support\Facades\Auth as FacadesAuth;
 
 class HomeController extends Controller
 {
@@ -24,7 +25,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        if (Auth::user()->role->name == "admin") {
+        if (Auth::user()->role->name == "admin" || Auth::user()->role->name = "driver") {
             return redirect()->to('/dashboard');
         }
         return view('home');

@@ -176,6 +176,37 @@
         </div>
 </div>
 </form>
+
+@else
+<h3>Appointments List: {{$myappointments->count()}}</h3>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Date</th>
+            <th scope="col">View/Update</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach($myappointments as $appointment)
+        <tr>
+            <th scope="row"></th>
+            <!--  Appointment.php: driver fn: return  $this->belongsTo(User::class, 'user_id', 'id'); -->
+            <td>{{$appointment->driver->name}}</td>
+            <td>{{$appointment->date}}</td>
+            <td>
+                <form action="{{route('appointment.check')}}" method="post">@csrf
+                    <input type="hidden" name="date" value="{{$appointment->date}}">
+                    <button type="submit" class="btn btn-primary">View/Update</button>
+                </form>
+            </td>
+        </tr>
+        @endforeach
+    </tbody>
+</table>
+
 @endif
 
 <style type="text/css">

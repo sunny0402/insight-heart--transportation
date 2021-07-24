@@ -21,12 +21,22 @@
                         <a href="pages/navbar.html"><i class="ik ik-menu"></i><span>Navigation</span> <span class="badge badge-success">New</span></a>
                     </div> -->
                     <div class="nav-item has-sub">
-                        <a href="javascript:void(0)"><i class="ik ik-layers"></i><span>Drivers</span> <span class="badge badge-danger">View...</span></a>
+                        <a href="javascript:void(0)"><i class="ik ik-layers"></i><span>Drivers</span> <span class="badge badge-danger">1</span></a>
                         <div class="submenu-content">
                             <a href="{{route('driver.create')}}" class="menu-item">Create Driver</a>
                             <a href="{{route('driver.index')}}" class="menu-item">View Drivers</a>
                         </div>
                     </div>
+
+                    <div class="nav-item has-sub">
+                        <a href="javascript:void(0)"><i class="ik ik-layers"></i><span>Appointments</span> <span class="badge badge-danger">2</span></a>
+                        <div class="submenu-content">
+                            <a href="{{route('appointment.create')}}" class="menu-item">Create new appointment</a>
+                            <a href="{{route('appointment.index')}}" class="menu-item">Check or Update Availability</a>
+                        </div>
+                    </div>
+
+
                     <div class="nav-lavel">UI Element</div>
                     <div class="nav-item has-sub">
                         <a href="#"><i class="ik ik-box"></i><span>Basic</span></a>
