@@ -25,7 +25,7 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-8">
-                        <input type="date" name="date" class="form-control">
+                        <input type="text" name="date" class="form-control" id="datepicker">
                     </div>
                     <div class="col-md-4">
                         <button class="btn btn-primary" type="submit">Find Drivers</button>
