@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FrontendController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 /*
@@ -13,18 +14,13 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'FrontendController@index');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-});
+Route::get('/new-appointment/{doctorId}/{date}', 'FrontendController@show')->name('create.appointment');
+
+Route::get('/dashboard', 'DashboardController@index');
 
 Auth::routes();
-
-
-
 
 // Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

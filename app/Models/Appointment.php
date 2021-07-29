@@ -12,11 +12,11 @@ class Appointment extends Model
     // whatever info comes from the form save in the database
     protected $guarded = [];
 
-    public function driver()
+    public function userIdToId()
     {
         // appointments table has user_id
         // users table has id
-        // this will take us from appointments table to users table
+        // this function will take us from appointments table to users table
         return  $this->belongsTo(User::class, 'user_id', 'id');
     }
 }

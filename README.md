@@ -12,6 +12,8 @@ search TODO to find incomplete tasks
 Currently the styles use Bootstrap 4.6.0
 Add driver form should have dropdown selection. This will also impact edit driver form.
 
+search TODO in project to review other TODOs
+
 ## Notes
 
 Accounts For Testing
@@ -161,3 +163,39 @@ For example, let's add a query condition that scopes the query to only search re
 
 How to pass data to views
 https://www.geeksforgeeks.org/different-ways-for-passing-data-to-view-in-laravel/
+
+## Frontend
+
+Uses jquery datepicker: https://jqueryui.com/datepicker/
+php artisan make:controller FrontendController
+
+Appointment.php
+'''
+public function userIdToId()
+{
+// appointments table has user_id
+// users table has id
+// this function will take us from appointments table to users table
+return \$this->belongsTo(User::class, 'user_id', 'id');
+}
+
+'''
+
+## protect dashboard
+
+php artisan make:controller DashboardController
+
+TODO: limit privelleges of drivers. Make sure only admin can add drivers.
+Not all drivers will be good need to be able to remove from system.
+
+Right now drivers have access to dashboard
+HomeController.php
+'''
+public function index()
+{
+if (Auth::user()->role->name == "admin" || Auth::user()->role->name = "driver") {
+return redirect()->to('/dashboard');
+}
+return view('home');
+}
+''''
