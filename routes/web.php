@@ -16,7 +16,10 @@ use Illuminate\Support\Facades\Auth;
 
 Route::get('/', 'FrontendController@index');
 
-Route::get('/new-appointment/{doctorId}/{date}', 'FrontendController@show')->name('create.appointment');
+Route::get('/new-appointment/{driverId}/{date}', 'FrontendController@show')->name('create.appointment');
+
+// store users appointment into bookings table
+Route::post('/book/appointment', 'FrontendController@store')->name('booking.appointment')->middleware('auth');
 
 Route::get('/dashboard', 'DashboardController@index');
 

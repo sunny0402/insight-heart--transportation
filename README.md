@@ -199,3 +199,71 @@ return redirect()->to('/dashboard');
 return view('home');
 }
 ''''
+
+## Booking
+
+php artisan make:model Booking -m
+
+'''
+Schema::create('bookings', function (Blueprint $table) {
+            $table->id();
+$table->integer('user_id');
+            $table->integer('driver_id');
+$table->string('time');
+            // 0 means ride booked, but ride not taken/complete
+            $table->integer('status')->default(0);
+});
+'''
+php artisan migrate
+
+Store information in bookings table and update times table
+Get appointment_id to toggle status in times table
+
+show appointments from times table with status 0
+and once booked change the status to 1
+
+add date column to bookings table
+
+php artisan make:migration add_date_to_bookings_table --table=bookings
+
+'''
+public function up()
+{
+Schema::table('bookings', function (Blueprint $table) {
+            $table->string('date');
+});
+}
+
+    public function down()
+    {
+        Schema::table('bookings', function (Blueprint $table) {
+            $table->dropColumn('date');
+        });
+    }
+
+}
+'''
+
+php artisan migrate
+
+## Booking Logic
+
+welcome.blade.php
+'''
+
+    <a href="
+    {{route('create.appointment', [$driver->user_id, $driver->date])}}
+    ">
+
+'''
+After user selects an available driver and clicks the above link.
+
+Get redirected to appointment.blade.php.
+
+Which gets passed driverId = $driver->user_id and date = $driver->date
+
+Route::get('/new-appointment/{driverId}/{date}', 'FrontendController@show')->name('create.appointment');
+
+add timestamps to booking table
+
+php artisan make:migration add_timestamps_to_bookings_table --table=bookings
