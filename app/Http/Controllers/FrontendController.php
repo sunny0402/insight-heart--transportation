@@ -7,6 +7,8 @@ use App\Models\Appointment;
 use App\Models\Time;
 use App\Models\User;
 use App\Models\Booking;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\AppointmentMail;
 
 class FrontendController extends Controller
 {
@@ -44,7 +46,21 @@ class FrontendController extends Controller
 
     public function store(Request $request)
     {
+        date_default_timezone_set('America/Toronto');
+
         $request->validate(['time' => 'required']);
+
+        // check if user already booked appointment for today
+        $check = $this->checkBookingTimeInterval();
+
+        // if already booked appointment redirect back
+        if ($check) {
+            return redirect()->back()->with(
+                'errmessage',
+                'You already made an appointment.Please wait 24hrs to make another appointment.'
+            );
+        }
+
         // status 0 here signifies booked but not yet attented
         Booking::create([
             'user_id' => auth()->user()->id,
@@ -60,6 +76,43 @@ class FrontendController extends Controller
             'appointment_id',
             $request->appointmentId
         )->where('time', $request->time)->update(['status' => 1]);
+
+        // send email notification to currently logged in user
+        $driver_info = User::where('id', $request->driverId)->first();
+        $mailData = [
+            'name' => auth()->user()->name,
+            'time' => $request->time,
+            'date' => $request->date,
+            'driverName' => $driver_info->name,
+            'driverPhone' => $driver_info->phone_number
+
+        ];
+        try {
+            Mail::to(auth()->user()->email)->send(new AppointmentMail($mailData));
+        } catch (\Exception $e) {
+            //
+        }
+
+
         return redirect()->back()->with('message', 'Appointment booked!');
+    }
+
+    // do NOT allow user to make more than 1 booking in a 24 hour period
+    // by checking created_at column
+    public function checkBookingTimeInterval()
+    {
+        //where: check if currently logged in user in the bookings table
+        //where: check if date in created_at column same as today's date
+        //exists returns true or false if both above where are true
+        return Booking::orderby('id', 'desc')
+            ->where('user_id', auth()->user()->id)
+            ->whereDate('created_at', date('Y-m-d'))
+            ->exists();
+    }
+
+    public function myBookings()
+    {
+        $all_user_appointments = Booking::latest()->where('user_id', auth()->user()->id)->get();
+        return view('booking.index', compact('all_user_appointments'));
     }
 }

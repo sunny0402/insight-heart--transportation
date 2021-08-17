@@ -21,6 +21,8 @@ Route::get('/new-appointment/{driverId}/{date}', 'FrontendController@show')->nam
 // store users appointment into bookings table
 Route::post('/book/appointment', 'FrontendController@store')->name('booking.appointment')->middleware('auth');
 
+Route::get('/my-booking', 'FrontendController@myBookings')->name('my.booking')->middleware('auth');
+
 Route::get('/dashboard', 'DashboardController@index');
 
 Auth::routes();

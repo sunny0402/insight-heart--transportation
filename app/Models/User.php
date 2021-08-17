@@ -51,6 +51,8 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    // defines relationship between User and Role models
+    // with this method can call properties of role model role->name
     public function role()
     {
         // id from the roles table is a foreign key, role_id, in users table

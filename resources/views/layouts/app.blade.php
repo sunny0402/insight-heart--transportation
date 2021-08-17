@@ -49,6 +49,12 @@
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
+                        @if(auth()->check() && auth()->user()->role->name === 'client')
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{route('my.booking')}}">
+                                {{ __('My Booking')}}</a>
+                        </li>
+                        @endif
                         <!-- Authentication Links -->
                         @guest
                         @if (Route::has('login'))

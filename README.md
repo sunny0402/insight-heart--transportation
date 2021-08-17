@@ -267,3 +267,39 @@ Route::get('/new-appointment/{driverId}/{date}', 'FrontendController@show')->nam
 add timestamps to booking table
 
 php artisan make:migration add_timestamps_to_bookings_table --table=bookings
+
+limit users to one appointment every 24 hrs
+
+php artisan make:mail AppointmentMail
+
+## Display all booked appointments
+
+-   make route
+    web.php
+    Route::get('/my-booking', 'FrontendController@myBookings')->name('my.booking')->middleware('auth');
+
+-   update app view
+    views/layouts/app.blade.php
+    '''
+    @if(auth()->user()->role->name === 'client')
+
+    <li class="nav-item">
+        <a class="nav-link" href="{{ route('my.booking') }}">{{ __('My Booking') }}</a>
+    </li>
+    @endif
+    '''
+
+-   controller logic
+    FrontendController.php
+    '''
+    public function myBookings()
+    {
+    \$all_user_appointments = Booking::latest()->where('user_id', auth()->user()->id)->get();
+    return view('booking.index', compact('appointments'));
+    }
+
+    '''
+    update booking view
+
+-   views/booking/index.blade.php
+    Loop through all data ( \$all_user_appointments)
