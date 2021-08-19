@@ -12,9 +12,10 @@ class Booking extends Model
 
     protected $guarded = [];
 
+    // TODO: causes error at booking/index.blade.php
     // relationship between Booking and User model
-    public function fromBookingToUser()
+    public function fromBookingToUserTable()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'driver_id', 'id');
     }
 }
