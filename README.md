@@ -303,3 +303,7 @@ php artisan make:mail AppointmentMail
 
 -   views/booking/index.blade.php
     Loop through all data ( \$all_user_appointments)
+
+## User Profiles
+
+php artisan make:controller ProfileController

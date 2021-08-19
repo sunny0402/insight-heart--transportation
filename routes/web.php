@@ -23,6 +23,10 @@ Route::post('/book/appointment', 'FrontendController@store')->name('booking.appo
 
 Route::get('/my-booking', 'FrontendController@myBookings')->name('my.booking')->middleware('auth');
 
+Route::get('profile', 'ProfileController@index');
+Route::post('profile', 'ProfileController@store')->name('profile.store');
+
+
 Route::get('/dashboard', 'DashboardController@index');
 
 Auth::routes();
