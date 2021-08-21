@@ -15,17 +15,19 @@ use Illuminate\Support\Facades\Auth;
 */
 
 Route::get('/', 'FrontendController@index');
-
+// anyone can view homepage or view drivers availability. don't have to be loggen in
 Route::get('/new-appointment/{driverId}/{date}', 'FrontendController@show')->name('create.appointment');
 
-// store users appointment into bookings table
-Route::post('/book/appointment', 'FrontendController@store')->name('booking.appointment')->middleware('auth');
+Route::group(['middleware' => ['auth', 'client']], function () {
+    // store users appointment into bookings table
+    Route::post('/book/appointment', 'FrontendController@store')->name('booking.appointment');
+    Route::get('/my-booking', 'FrontendController@myBookings')->name('my.booking');
 
-Route::get('/my-booking', 'FrontendController@myBookings')->name('my.booking')->middleware('auth');
-
-Route::get('profile', 'ProfileController@index');
-Route::post('profile', 'ProfileController@store')->name('profile.store');
-
+    // view/update client profile
+    Route::get('user-profile', 'ProfileController@index');
+    Route::post('profile', 'ProfileController@store')->name('profile.store');
+    Route::post('/profile-picture', 'ProfileController@profilePicture')->name('profile.picture');
+});
 
 Route::get('/dashboard', 'DashboardController@index');
 

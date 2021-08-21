@@ -2,6 +2,9 @@
 
 @section('content')
 <div class="container">
+    @if(Session::has('message'))
+    <div class="alert alert-success">{{Session::get('message')}}</div>
+    @endif
     <div class="row">
         <div class="col-md-3">
             <div class="card">
@@ -35,7 +38,7 @@
 
                         <div class="form-group">
                             <label>Address</label>
-                            <input type="text" name="address" class="form-control">
+                            <input type="text" name="address" class="form-control" value="{{auth()->user()->address}}">
                         </div>
 
                         <div class="form-group">
@@ -50,12 +53,14 @@
 
                         <div class="form-group">
                             <label>Phone Number</label>
-                            <input type="text" name="phone_number" class="form-control">
+                            <input type="text" name="phone_number" class="form-control" value="{{auth()->user()->phone_number}}">
                         </div>
 
                         <div class="form-group">
                             <label>Bio</label>
-                            <textarea name="description" class="form-control" cols="15" rows="5"></textarea>
+                            <textarea name="description" class="form-control" cols="15" rows="5">
+                            {{auth()->user()->description}}
+                            </textarea>
                         </div>
 
                         <div class="form-group">
@@ -73,14 +78,25 @@
         <div class="col-md-3">
             <div class="card">
                 <div class="card-header">Update Photo</div>
-
-                <div class="card-body">
-                    <img src="images/pPmrx54SH8qqrdQJYALpOuswkuwimLpY2sZaRtlH.png" width="120">
-                    <br><br>
-                    <input type="file" name="image" class="form-control">
-                    <br>
-                    <button type="submit" class="btn btn-primary">Update Photo</button>
-                </div>
+                <form action="{{route('profile.picture')}}" method="post" enctype="multipart/form-data">@csrf
+                    <div class="card-body">
+                        @if(!auth()->user()->image)
+                        <!-- default image -->
+                        <img src="images/pPmrx54SH8qqrdQJYALpOuswkuwimLpY2sZaRtlH.png" width="120">
+                        @else
+                        <img src="/profile/{{auth()->user()->image}}" width="120">
+                        @endif
+                        <br><br>
+                        <input type="file" name="file" class="form-control" required="">
+                        <br>
+                        @error('file')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+                        <button type="submit" class="btn btn-primary">Update Photo</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

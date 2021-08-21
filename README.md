@@ -307,3 +307,16 @@ php artisan make:mail AppointmentMail
 ## User Profiles
 
 php artisan make:controller ProfileController
+
+## Middleware to protect client routes
+
+php artisan make:middleware Client
+
+## Summary to Now
+
+1. admin can create drivers.
+2. drivers can create appointment times.
+3. display appointment time of drivers on the frontend
+4. create clients
+5. client is able to book appointment
+6. clients can create profile

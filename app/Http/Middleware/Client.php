@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class Driver
+class Client
 {
     /**
      * Handle an incoming request.
@@ -17,7 +17,8 @@ class Driver
      */
     public function handle(Request $request, Closure $next)
     {
-        if (Auth::user()->role->name == "driver") {
+        // role if from roles table
+        if (Auth::user()->role->name == "client") {
             return $next($request);
         } else {
             return redirect()->back();
