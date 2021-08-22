@@ -19,7 +19,10 @@ class DashboardController extends Controller
         // check who is logged in
         // dd(Auth::user()->role->name);
 
-        // redirect user to home instead of admin dashboard
+        // redirect user to not home instead of admin dashboard
+        // TODO: redirect back to welcome page to view available drivers...
+        // return redirect()->back()->with('message', 'Loggen In. Book Appointment');
+        // or edit home view
         if (Auth::user()->role->name == 'client') {
             return view('home');
         }

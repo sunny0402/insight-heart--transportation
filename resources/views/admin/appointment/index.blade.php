@@ -1,5 +1,5 @@
 @extends('admin.layouts.master')
-
+<!-- master is layouts -->
 @section('content')
 <!-- form-component.html -->
 <div class="page-header">

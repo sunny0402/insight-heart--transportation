@@ -41,6 +41,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 //protected routes: driver, driver/create, driver/edit, driver/delete
 Route::group(['middleware' => ['auth', 'admin']], function () {
     Route::resource('driver', 'DriverController');
+    Route::get('/clients', 'ClientListController@index')->name('client');
+    Route::get('/status/update/{id}', 'ClientListController@toggleStatus')->name('update.status');
 });
 
 // only driver can create check or update appointments

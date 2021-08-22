@@ -9,8 +9,24 @@ Current routes:
 ## TODO
 
 search TODO to find incomplete tasks
+
+reset password link
+https://laravel.com/docs/8.x/passwords
+
 Currently the styles use Bootstrap 4.6.0
 Add driver form should have dropdown selection. This will also impact edit driver form.
+
+After client log's in where are they redirected? Review where admin or doctor are redirected after log in.
+
+Real time notifications to user. (Laravel Pusher, Laravel Echo)
+https://pusher.com/laravel
+https://laravel-livewire.com/docs/2.x/laravel-echo
+
+Client rates drivers and drivers rate clients.
+
+Automate app tasks suchs as marking trips complete. Custom commands and scheduling tasks.
+
+Make mobile friendly or mobile version with Laravel.
 
 search TODO in project to review other TODOs
 
@@ -320,3 +336,31 @@ php artisan make:middleware Client
 4. create clients
 5. client is able to book appointment
 6. clients can create profile
+
+Now client will take a ride with one of our drivers.
+
+And so let's make a controller for the below:
+Admin can see a list of clients that made booking for today's date.
+Admin then can mark trips as complete.
+
+php artisan make:controller ClientListController
+
+## Errors
+
+When route url same as folder name in public directory.
+
+## How are we able to access datepicker in clientlist/index.blade.php
+
+'''
+views/admin/layouts/master.blade.php
+@include('admin.layouts.header')
+@include('admin.layouts.sidebar')
+
+<div class="main-content">
+    @yield('content')
+</div>
+@include('admin.layouts.footer')
+'''
+
+And footer.blade.php imports jquery and datepicker
+And clientlist/index.blade.php extends master: @extends('admin.layouts.master')
