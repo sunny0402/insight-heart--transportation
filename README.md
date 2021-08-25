@@ -30,6 +30,8 @@ Make mobile friendly or mobile version with Laravel.
 
 prescriptions can be drivers saving notes
 
+automate website manual tasks such as sending email or monthly updates with CRON jobs cloudways
+
 search TODO in project to review other TODOs
 
 ## Notes
