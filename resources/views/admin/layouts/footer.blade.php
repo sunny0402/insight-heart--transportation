@@ -118,17 +118,15 @@
 <script src="{{asset('template/js/widgets.js')}}"></script>
 <script src="{{asset('template/js/charts.js')}}"></script>
 <script src="{{asset('template/dist/js/theme.min.js')}}"></script>
-
-
+<!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
 <script type="text/javascript">
     $(document).ready(function() {
         $("#datepicker").datetimepicker({
             format: 'YYYY-MM-DD'
         })
-    });
+    })
 </script>
 
-<!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
 <script>
     (function(b, o, i, l, e, r) {
         b.GoogleAnalyticsObject = l;
@@ -145,6 +143,7 @@
     ga('create', 'UA-XXXXX-X', 'auto');
     ga('send', 'pageview');
 </script>
+
 </body>
 
 </html>

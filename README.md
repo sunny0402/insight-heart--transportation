@@ -28,6 +28,8 @@ Automate app tasks suchs as marking trips complete. Custom commands and scheduli
 
 Make mobile friendly or mobile version with Laravel.
 
+prescriptions can be drivers saving notes
+
 search TODO in project to review other TODOs
 
 ## Notes
@@ -364,3 +366,9 @@ views/admin/layouts/master.blade.php
 
 And footer.blade.php imports jquery and datepicker
 And clientlist/index.blade.php extends master: @extends('admin.layouts.master')
+
+## sidebar.blade.php
+
+Only admin can see the create new drivers link.
+Admin and drivers can view all appointments and toggle status.
+Maybe should allow drivers to view only their scheduled trips.

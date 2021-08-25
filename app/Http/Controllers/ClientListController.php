@@ -18,7 +18,8 @@ class ClientListController extends Controller
             $bookings = Booking::latest()->where('date', $request->date)->get();
             return view('admin.clientlist.index', compact('bookings'));
         }
-        $bookings = Booking::latest()->get();
+        // otherwise display all
+        $bookings = Booking::latest()->paginate(30);
         return view('admin.clientlist.index', compact('bookings'));
     }
 
