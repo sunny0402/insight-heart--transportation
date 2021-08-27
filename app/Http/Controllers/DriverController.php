@@ -57,7 +57,9 @@ class DriverController extends Controller
         // store in database
         User::create($data);
 
-        return redirect()->back()->with('message', 'Driver added successfully');
+        //return redirect()->back()->with('message', 'Driver added successfully');
+        return redirect()->route('driver.index')->with('message', 'Driver added
+         successfully');
     }
 
     /**
@@ -151,7 +153,7 @@ class DriverController extends Controller
         if ($userDelete) {
             unlink(public_path('images/' . $user->image));
         }
-        return redirect()->route('driver.index')->with('message', 'Doctor deleted successfully');
+        return redirect()->route('driver.index')->with('message', 'Driver deleted successfully');
     }
     public function validateStore($request)
     {
