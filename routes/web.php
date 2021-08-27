@@ -24,8 +24,8 @@ Route::group(['middleware' => ['auth', 'client']], function () {
     Route::get('/my-booking', 'FrontendController@myBookings')->name('my.booking');
 
     // view/update client profile
-    Route::get('user-profile', 'ProfileController@index');
-    Route::post('profile', 'ProfileController@store')->name('profile.store');
+    Route::get('/user-profile', 'ProfileController@index');
+    Route::post('/user-profile', 'ProfileController@store')->name('profile.store');
     Route::post('/profile-picture', 'ProfileController@profilePicture')->name('profile.picture');
 });
 

@@ -140,7 +140,8 @@ class DriverController extends Controller
     public function destroy($id)
     {
         // cannot delete yourself
-        if (auth()->user()->id == $id) {
+        if (
+            ->user()->id == $id) {
             abort(401);
         }
         $user = User::find($id);
