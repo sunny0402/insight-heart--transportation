@@ -374,3 +374,7 @@ And clientlist/index.blade.php extends master: @extends('admin.layouts.master')
 Only admin can see the create new drivers link.
 Admin and drivers can view all appointments and toggle status.
 Maybe should allow drivers to view only their scheduled trips.
+
+## Add license plate column to users
+
+php artisan make:migration add_license_plate_to_users_table --table=users
