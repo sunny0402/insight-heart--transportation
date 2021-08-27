@@ -141,7 +141,8 @@ class DriverController extends Controller
     {
         // cannot delete yourself
         if (
-            ->user()->id == $id) {
+            auth()->user()->id == $id
+        ) {
             abort(401);
         }
         $user = User::find($id);
