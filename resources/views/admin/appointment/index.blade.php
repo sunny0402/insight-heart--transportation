@@ -194,7 +194,7 @@
         <tr>
             <th scope="row"></th>
             <!--  Appointment.php: driver fn: return  $this->belongsTo(User::class, 'user_id', 'id'); -->
-            <td>{{$appointment->driver->name}}</td>
+            <td>{{$appointment->userIdToId->name}}</td>
             <td>{{$appointment->date}}</td>
             <td>
                 <form action="{{route('appointment.check')}}" method="post">@csrf
