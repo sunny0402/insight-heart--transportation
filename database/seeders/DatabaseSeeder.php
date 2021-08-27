@@ -21,8 +21,5 @@ class DatabaseSeeder extends Seeder
         Role::create(['name' => 'driver']);
         Role::create(['name' => 'admin']);
         Role::create(['name' => 'client']);
-
-        User::create(['
-        ']);
     }
 }

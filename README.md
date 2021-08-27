@@ -378,3 +378,8 @@ Maybe should allow drivers to view only their scheduled trips.
 ## Add license plate column to users
 
 php artisan make:migration add_license_plate_to_users_table --table=users
+
+Production Tests
+1 driver
+2 admin
+3 client
