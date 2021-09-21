@@ -383,3 +383,83 @@ Production Tests
 1 driver
 2 admin
 3 client
+
+## Deploy
+
+https://support.cloudways.com/en/articles/5128779-how-to-deploy-laravel-project-on-cloudways-server
+
+View repo setting, then SSH keys. This is used for deployment.
+
+Cloudways referral code: https://vrlps.co/w111Cun/cp
+
+1.
+
+RuntimeException
+In order to use the Auth::routes() method, please install the laravel/ui package.
+
+composer install
+
+2. need to connect to server
+
+SQLSTATE[HY000][1045] Access denied for user 'root'@'localhost' (using password: NO) (SQL: select \* from `appointments` where `date` = 2021-09-21)
+
+vim .env
+
+update
+
+DB_DATABASE
+DB_USERNAME
+DB_PASSWORD
+
+then to exit vim
+escape key
+shift+:
+wq
+
+3. need to run migrations and seed
+
+SQLSTATE[42S02]: Base table or view not found: 1146 Table 'dcwgdezvez.appointments' doesn't exist (SQL: select \* from `appointments` where `date` = 2021-09-21)
+
+fresh if first time
+
+php artisan migrate:fresh
+php artisan db:seed
+
+4. public_html/storage/logs/laravel.log" could not be opened in append mode: faile
+   d to open stream: Permission denied
+
+    In Cloudways applicaion settings:
+
+    RESET FILE / FOLDERS PERMISSIONS
+
+5. SQLSTATE[42000]: Syntax error or access violation: 1071 Specified key was too long
+   Make sure php version and sql version locally match the Cloudway versions
+
+Check php mysql version locally
+php artisan serve, then launch XAMPP
+
+PHP version: 7.4.20
+Server type: MariaDB
+Server version: 10.4.19-MariaDB
+
+Locally
+laravel version: php artisan --version
+Laravel Framework 8.46.0
+
+And on Cloudways
+[master_eucwayzrac]:public_html\$ php artisan--version Laravel Framework 8.61.0
+
+Review Server setting and packages
+
+timezone:
+locally: date_default_timezone_set('America/Toronto');
+
+cloudways:
+MYSQL
+TIMEZONE
+(GMT-05:00) Eastern Time (US & Canada)
+
+On Cloudways update packages:
+PHP 7.4
+
+update laravel locally
