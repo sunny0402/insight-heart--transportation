@@ -61,7 +61,7 @@ class FrontendController extends Controller
             );
         }
 
-        // status 0 here signifies booked but not yet attented
+        // status 0 here signifies booked but not yet attended/complete
         Booking::create([
             'user_id' => auth()->user()->id,
             'driver_id' => $request->driverId,
@@ -85,8 +85,8 @@ class FrontendController extends Controller
             'date' => $request->date,
             'driverName' => $driver_info->name,
             'driverPhone' => $driver_info->phone_number
-
         ];
+
         try {
             Mail::to(auth()->user()->email)->send(new AppointmentMail($mailData));
         } catch (\Exception $e) {
@@ -94,7 +94,7 @@ class FrontendController extends Controller
         }
 
 
-        return redirect()->back()->with('message', 'Appointment booked!');
+        return redirect()->back()->with('message', 'Appointment booked! Please check your email for further instructions.');
     }
 
     // do NOT allow user to make more than 1 booking in a 24 hour period

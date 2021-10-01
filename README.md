@@ -463,3 +463,95 @@ On Cloudways update packages:
 PHP 7.4
 
 update laravel locally
+
+So after PHP updraged to version 7.4 and MariaDB to 10.4 on Cloudways migrations run succesfully.
+
+php artisan migrate:fresh
+php artisan db:seed
+
+Error: 419 Page Expired
+disabled varnish...
+
+ErrorException
+Trying to get property 'image' of non-object ...
+
+https://stackoverflow.com/questions/51079896/trying-to-get-property-image-of-non-object-laravel
+
+## SMTP
+
+google
+set up two factor authenticatio then create app password.
+https://support.cloudways.com/en/articles/5131076-how-to-configure-gmail-smtp?utm_source=Platformkb&utm_medium=kbsearch
+
+edit application default email address
+https://support.cloudways.com/en/articles/5133526-set-from-address-from-the-cloudways-console
+
+DEFAULT EMAIL SENDER temporarily change from:
+dcwgdezvez@663449.cloudwaysapps.com
+TO
+alex.volsky@insightheart.ca
+
+Email addons to consider later ...
+https://support.cloudways.com/en/articles/5131071-which-email-add-on-should-i-use?utm_source=Platformkb&utm_medium=kbsearch
+
+Laravel Mail
+https://www.cloudways.com/blog/send-email-in-laravel/
+Example from Article:
+php artisan make:mail CloudHostingProduct
+
+public function build()
+{
+return \$this->from('cloudways@cloudways.com')
+->view('emails.CloudHosting.Product);
+}
+
+If you are using the same email address across the whole application, then you have to first configure it in the config/mail.php file.
+
+'from' => ['address' => 'example@example.com', 'name' => 'App Name'],
+
+public function build()
+{
+return \$this->view('emails.CloudHosting.Product);
+}
+
+Want to pass some data to the view function that you can utilize when rendering the email’s HTML? There are two ways to make data available to your view.
+
+First, any public property defined in your mailable class will automatically be available to the view. For example, you may pass data into your mailable class’ constructor and set that data to public properties defined on the class:
+
+<?php
+namespace App\Mail;
+use Illuminate\Bus\Queueable;
+use Illuminate\Mail\Mailable;
+use Illuminate\Queue\SerializesModels;
+use Illuminate\Contracts\Queue\ShouldQueue;
+class SendMailable extends Mailable
+{
+    use Queueable, SerializesModels;
+    public $name;
+   
+    public function __construct($name)
+    {
+        $this->name = $name;
+    }
+    public function build()
+    {
+        return $this->view('emails.name');
+    }
+}
+
+.... steps descriped in article
+
+previous mailtrap settings in local .env file:
+
+MAIL_MAILER=smtp
+MAIL_HOST=smtp.mailtrap.io
+MAIL_PORT=2525
+MAIL_USERNAME=f2afaa3fcc5a67
+MAIL_PASSWORD=0cf6d23b07d731
+MAIL_ENCRYPTION=tls
+MAIL_FROM_ADDRESS=booking@insightheart.com
+MAIL_FROM_NAME="${APP_NAME}"
+
+These settings were updated to smtp.google.com on the Cloudways server.
+The local .env file is not pushed to GitHub or Cloudways.
+Can continue to test email notfiications locally with mailtrap.

@@ -55,7 +55,7 @@ class AppointmentController extends Controller
 
         foreach ($request->time as $time) {
             Time::create([
-                // forein key which points to appointment table
+                // foreing key which points to appointment table
                 'appointment_id' => $appointment->id,
                 'time' => $time,
                 // default set to 0 ... view migration file
