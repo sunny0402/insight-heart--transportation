@@ -18,6 +18,7 @@
                                 <th scope="col">Appointment Date</th>
                                 <th scope="col">Created Date</th>
                                 <th scope="col">Status</th>
+                                <th scope="col">Cancel Appointment</th>
                             </tr>
                         </thead>
 
@@ -36,6 +37,14 @@
                                     <button class="btn btn-success">Complete</button>
                                     @endif
                                 </td>
+                                <td>
+                                    <form action="{{route('cancel.my.booking')}}" method="post">@csrf
+                                        <input type="hidden" name="appointment" value="{{$appointment->appointment}}">
+                                        <input type="hidden" name="date" value="{{$appointment->date}}">
+                                        <input type="hidden" name="time" value="{{$appointment->time}}">
+                                    <button class="btn btn-primary">Cancel</button>
+                                    </form>
+                                </td>
                             </tr>
                             @empty
                             <td>You have no appointments.</td>
@@ -49,3 +58,24 @@
     </div>
 </div>
 @endsection
+
+
+
+{{-- <form action="{{route('appointment.check')}}" method="post">@csrf
+    <div class="card">
+        <div class="card-header">
+            Choose date
+            <br>
+
+            @if(isset($date))
+            Your time table for:
+            {{$date}}
+            @endif
+        </div>
+        <div class="card-body">
+            <input type="text" class="form-control datetimepicker-input" id="datepicker" data-toggle="datetimepicker" data-target="#datepicker" name="date">
+            <br>
+            <button type="submit" class="btn btn-primary">Check Availability </button>
+        </div>
+    </div>
+</form> --}}

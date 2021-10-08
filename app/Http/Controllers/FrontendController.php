@@ -46,6 +46,7 @@ class FrontendController extends Controller
 
     public function store(Request $request)
     {
+        //dd($request->all());
         date_default_timezone_set('America/Toronto');
 
         $request->validate(['time' => 'required']);
@@ -67,7 +68,8 @@ class FrontendController extends Controller
             'driver_id' => $request->driverId,
             'time' => $request->time,
             'date' => $request->date,
-            'status' => 0
+            'status' => 0,
+            'appointment' => $request->appointmentId
         ]);
 
         // update the times table to reflect that that time is now booked
@@ -114,5 +116,28 @@ class FrontendController extends Controller
     {
         $all_user_appointments = Booking::latest()->where('user_id', auth()->user()->id)->get();
         return view('booking.index', compact('all_user_appointments'));
+    }
+
+    // reverse the previously made booking
+    public function cancelMyBooking(Request $request)
+    {
+        //dd($request->all());
+
+        //delete booking
+        Booking::where('user_id', auth()->user()->id)
+            ->where('date', $request->date)
+            ->where('time', $request->time)
+            ->delete();
+
+        //make time slot available again by updating the status from 1 to 0 in time table
+        Time::where(
+            'appointment_id',
+            $request->appointment
+        )->where('time', $request->time)->update(['status' => 0]);
+
+        //send email notification
+
+        //redirect to show all bookings
+        return $this->myBookings();
     }
 }

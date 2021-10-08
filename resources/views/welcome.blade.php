@@ -81,7 +81,7 @@
                             <input type="text" name="date" class="form-control" id="datepicker">
                         </div>
                         <div class="col-md-6">
-                            <button type="button" class="btn btn-primary btn-lg" type="submit">Find Drivers</button>
+                            <button class="btn btn-primary btn-lg" type="submit">Find Drivers</button>
                         </div>
                     </div>
                 </div>
@@ -130,7 +130,7 @@
 
                 </table>
                 {{-- <div class="col-md-4">
-                    <button type="button" class="btn btn-primary btn-lg" type="submit">Find Drivers</button>
+                    <button  class="btn btn-primary btn-lg" type="submit">Find Drivers</button>
                 </div> --}}
 
             </div>

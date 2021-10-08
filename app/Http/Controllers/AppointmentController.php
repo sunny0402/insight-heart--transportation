@@ -111,7 +111,7 @@ class AppointmentController extends Controller
     }
 
     // check if which time slots already taken for that date
-    // route for a looged in driver /appointment/check
+    // route for a loged in driver /appointment/check
     // based on date should get appointment id then get all time slots from times table
     public function check(Request $request)
     {

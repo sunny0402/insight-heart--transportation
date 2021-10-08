@@ -555,3 +555,11 @@ MAIL_FROM_NAME="${APP_NAME}"
 These settings were updated to smtp.google.com on the Cloudways server.
 The local .env file is not pushed to GitHub or Cloudways.
 Can continue to test email notfiications locally with mailtrap.
+
+
+## Migration
+
+Add appointment column to Booking table
+stop local host to run below
+php artisan make:migration add_appointment_to_bookings_table --table=bookings
+php artisan migrate

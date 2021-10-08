@@ -22,6 +22,9 @@ Route::group(['middleware' => ['auth', 'client']], function () {
     // store users appointment into bookings table
     Route::post('/book/appointment', 'FrontendController@store')->name('booking.appointment');
     Route::get('/my-booking', 'FrontendController@myBookings')->name('my.booking');
+    //update booked appointment
+    Route::post('/my-booking/cancel', 'FrontendController@cancelMyBooking')->name('cancel.my.booking');
+
 
     // view/update client profile
     Route::get('/user-profile', 'ProfileController@index');
@@ -37,7 +40,7 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 // protect driver route
-// can only access if loggen in user is admin
+// can only access if logged in user is admin
 //protected routes: driver, driver/create, driver/edit, driver/delete
 Route::group(['middleware' => ['auth', 'admin']], function () {
     Route::resource('driver', 'DriverController');
