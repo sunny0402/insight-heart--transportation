@@ -9,6 +9,7 @@ use App\Models\User;
 use App\Models\Booking;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\AppointmentMail;
+use App\Mail\CancelAppointmentMail;
 
 class FrontendController extends Controller
 {
@@ -137,7 +138,23 @@ class FrontendController extends Controller
 
         //send email notification
 
+        $mailDataCancel = [
+            'name' => auth()->user()->name,
+            'time' => $request->time,
+            'date' => $request->date,
+        ];
+
+        try {
+            Mail::to(auth()->user()->email)->send(new CancelAppointmentMail($mailDataCancel));
+        } catch (\Exception $e) {
+            //
+        }
+
         //redirect to show all bookings
         return $this->myBookings();
+        // return redirect()->back()->with(
+        //     'message',
+        //     'Appointment cancel! Please check your email for confirmation. To book another appointment visit the home page.'
+        // );
     }
 }

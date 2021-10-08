@@ -1,101 +1,127 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-6">
-            {{-- style="border:1px solid #ccc; --}}
-            <img src="/banner/logo-mark-version3.jpg" class="img-fluid" style="border-radius:10px; object-fit: cover; ">
-        </div>
-        <div class="col-md-6 d-flex flex-column justify-content-center">
-            <h2>Create an account & book your drive</h2>
-            <p>With our InsightHeart Foundation Transportation Program, we are driving Seniors and Cancer Patients to their local scheduled medical appointments for FREE.</p>
-            <div class="mt-5">
-                <a href="{{url('/register')}}"><button type="button" class="btn btn-success btn-lg">Register as Client</button></a>
-                <a href="{{url('/login')}}"><button type="button" class="btn btn-secondary btn-lg">Login</button></a>
-            </div>
-        </div>
-    </div>
-    <hr>
-    
-      <!-- image slider -->
+<div class="container-fluid">
+
+    <!-- InsighHeart Logo -->
     <div class="card">
         <div class="card-body">
-            <div class="card-header">
-                <h3>We are the InsighHeart Foundation</h3>
-            </div>
-            <div class="card-body">
-                <div class="row d-flex flex-row justify-content-center">
-                    <div class="col-md-6">
-                        <div id="welcome-page-slider" class="carousel slide" data-ride="carousel">
-                            <div class="carousel-inner">
-                              <div class="carousel-item active">
-                                <img class="img-fluid" src="/banner/logo-mark-version3.jpg" alt="First slide" style="border-radius:15px;">
-                              </div>
-                              <div class="carousel-item">
-                                <img class="img-fluid" src="/banner/logo-mark-version2.jpg" alt="Second slide" style="border-radius:15px; ">
-                              </div>
-                              <div class="carousel-item">
-                                <img class="img-fluid" src="/banner/logo-mark-version1.jpg" alt="Third slide" style="border-radius:15px;">
-                              </div>
-                              <div class="carousel-item">
-                                <img class="img-fluid" src="/banner/backpacks_4_smiles_aug2021_6.jpg" alt="Third slide" style="border-radius:15px;">
-                              </div>
-                              <div class="carousel-item">
-                                <img class="img-fluid" src="/banner/hope_food_drive_aug2021.jpg" alt="Third slide" style="border-radius:15px;">
-                              </div>
-                            </div>
-                            <a class="carousel-control-prev" href="#welcome-page-slider" role="button" data-slide="prev">
-                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span class="sr-only">Previous</span>
-                              </a>
-                              <a class="carousel-control-next" href="#welcome-page-slider" role="button" data-slide="next">
-                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span class="sr-only">Next</span>
-                              </a>
-                          </div>
-                    </div>
-                    {{-- <div class="col-md-4">
-                        <button class="btn btn-primary" type="submit">Find Drivers</button>
-                    </div> --}}
+            <div class="row d-flex flex-row justify-content-center">
+                <div class="col-md-6">
+                    <img src="/banner/InsightHeartGo.jpg" class="img-fluid" 
+                    style="border-radius:10px; object-fit: cover; ">
                 </div>
             </div>
         </div>
     </div>
-    <!-- search drivers -->
-    <!-- added csrf -->
-    <form action="{{url('/')}}" method="GET">@csrf
-        <div class="card">
-            <div class="card-body">
-                <div class="card-header">
-                    <h3>Find a driver</h3>
+   <!-- InsighHeart Logo -->
+
+<!-- About InsighHeartGO -->
+        <div class="card text-white bg-primary mb-3" 
+        style="border-radius:10px; margin: 10px 0 10px 0; ">
+                <div class="card-header d-flex flex-row justify-content-center">
+                    <h3 class="text-white"
+                    >Community Transportation</h3>
                 </div>
                 <div class="card-body">
                     <div class="row">
-                        <div class="col-md-6">
-                            <p>Our drivers are provided by a combination of volunteers and partner agency drivers.  Our driver assistance includes support in and out of the vehicle, help handling groceries, and some mobility equipment. Escorts are recommended at no cost.</p>
+                        <div class="col-md-6 d-flex flex-column justify-content-center">
+                            <p>With our InsightHeart Foundation Transportation Program, we are driving Seniors and Cancer Patients to their local scheduled medical appointments for FREE.</p>
+
+                            <p>Our drivers are provided by a combination of volunteers and partner agency drivers.  Our driver assistance includes support in and out of the vehicle, help handling groceries, and some mobility equipment. Escorts are recommended at no cost. 
+                            </p>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <input type="text" name="date" class="form-control" id="datepicker">
-                        </div>
-                        <div class="col-md-6">
-                            <button class="btn btn-primary btn-lg" type="submit">Find Drivers</button>
+                        <div class="col-md-6 d-flex flex-row justify-content-center">
+                            <img src="/banner/backpacks_4_smiles_aug2021_6.jpg" class="img-fluid" 
+                            style="
+                            max-width:400px;
+                            border-radius:10px; 
+                            object-fit: cover; ">
                         </div>
                     </div>
                 </div>
+        </div>
+<!-- end About InsighHeartGO -->
+
+
+<!-- Login/Register -->
+    <div class="card">
+        <div class="card-body">
+            <div class="row d-flex flex-row justify-content-center">
+                            <a href="{{url('/register')}}">
+                                <button type="button" 
+                                class="btn btn-success btn-lg"
+                                style="
+                                        width: 12rem;
+                                        height: 4rem;
+                                        margin-right: 10px;
+                                        border: none;
+                                        border-radius: 0.7rem;
+                                        font-size: 1.4rem;
+                                        line-height: 1.5rem;
+                                        color: #eee;
+                                        box-shadow: 0 0.1rem 0.8rem rgba(0, 0, 0, 0.4);">
+                                Register</button>
+                            </a>
+                            <a href="{{url('/login')}}">
+                                <button type="button" 
+                                class="btn btn-secondary btn-lg"
+                                style="
+                                width: 12rem;
+                                height: 4rem;
+                                margin-right: 10px;
+                                border: none;
+                                border-radius: 0.7rem;
+                                font-size: 1.4rem;
+                                line-height: 1.5rem;
+                                color: #eee;
+                                box-shadow: 0 0.1rem 0.8rem rgba(0, 0, 0, 0.4);">
+                                Login</button>
+                            </a>       
+            </div>           
+        </div>
+    </div>
+<!-- end Login/Register -->
+    
+    
+    <!-- Find Driver/Schedule Ride -->
+    <form action="{{url('/')}}" method="GET">@csrf
+        <div class="card">
+            <div class="card-body">
+                    <div class="row d-flex flex-column justify-content-center align-items-center ">
+                            <input type="text" name="date" 
+                            class="form-control" id="datepicker"
+                            style="
+                                width: 12rem;
+                                height: 4rem;
+                                box-shadow: 0 0.1rem 0.8rem rgba(0, 0, 0, 0.4);">
+
+                                <button class="btn btn-primary btn-lg"
+                                type="submit"
+                                style="
+                                width: 12rem;
+                                height: 4rem;
+                                margin-top: 2rem;
+                                border: none;
+                                border-radius: 0.7rem;
+                                font-size: 1.4rem;
+                                line-height: 1.5rem;
+                                color: #eee;
+                                box-shadow: 0 0.1rem 0.8rem rgba(0, 0, 0, 0.4);"
+                                >Find Drivers</button>
+                    </div>
             </div>
         </div>
     </form>
-    <!-- display drivers -->
+<!-- END Find Driver/Schedule Ride -->
+
+<!-- Display Available drivers -->
     <div class="card">
         <div class="card-body">
-            <div class="card-header">
-                <h3>Available Drivers</h3>
-            </div>
-            <div class="card-body">
-                <table class="table table-striped">
+            <div class="row d-flex flex-row justify-content-center align-items-center">
+                <div class="col-md-10">
+                <table class="table table-striped table-hover">
+
                     <thead>
                         <tr>
                             <th>#</th>
@@ -105,6 +131,7 @@
                             <th>Book</th>
                         </tr>
                     </thead>
+
                     <tbody>
                         @forelse($available_drivers as $driver)
                         <tr>
@@ -129,15 +156,13 @@
                     </tbody>
 
                 </table>
-                {{-- <div class="col-md-4">
-                    <button  class="btn btn-primary btn-lg" type="submit">Find Drivers</button>
-                </div> --}}
-
             </div>
+         </div>
         </div>
-
     </div>
+<!-- END Display Available drivers -->
 
 
+<!-- container-fluid closing div -->
 </div>
 @endsection

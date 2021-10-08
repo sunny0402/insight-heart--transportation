@@ -6,10 +6,10 @@
         <div class="col-md-10">
             <div class="card">
                 <!-- your appointments -->
-                <div class="card-header">Number of Trips: {{$all_user_appointments->count()}} </div>
+                <div class="card-header"><h4>Number of Trips: {{$all_user_appointments->count()}} </h4></div>
 
                 <div class="card-body">
-                    <table class="table table-striped">
+                    <table class="table table-striped table-hover">
                         <thead>
                             <tr>
                                 <th scope="col">#</th>
@@ -47,7 +47,18 @@
                                 </td>
                             </tr>
                             @empty
-                            <td>You have no appointments.</td>
+                            <div class="card">
+                                <div class="card-header"><h4>You have no appointments scheduled.</h4> </div>
+                                    <div class="card-body">
+                                        <div class="row">
+                                                <div class="col-md-10">
+                                                    <a href="/">
+                                                        <button type="button" class="btn btn-success btn-lg">Book another appointment.</button>
+                                                    </a>
+                                                </div>
+                                        </div>
+                                    </div>
+                            </div>
                             @endforelse
                         </tbody>
                     </table>

@@ -563,3 +563,14 @@ Add appointment column to Booking table
 stop local host to run below
 php artisan make:migration add_appointment_to_bookings_table --table=bookings
 php artisan migrate
+
+
+
+php artisan make:mail CancelAppointmentMail
+
+
+## TODO
+
+Client should be able to specify pickup location and drop off point.
+
+SMS notification once driver is close.
