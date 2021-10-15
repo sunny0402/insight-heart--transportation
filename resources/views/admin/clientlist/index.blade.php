@@ -44,7 +44,14 @@
                             <tr>
                                 <!-- fromBookingToUserTable and user relationships defined in Booking model, Booking.php  -->
                                 <th scope="row">{{$key+1}}</th>
-                                <td><img src="/profile/{{$a_booking->user->image}}" width="80" style="border-radius:50%;"></td>
+                                <td>
+                                    @if(!$a_booking->user->image)
+                                    <!-- default image -->
+                                    <img src="images/pPmrx54SH8qqrdQJYALpOuswkuwimLpY2sZaRtlH.png" width="80">
+                                    @else
+                                    <img src="/profile/{{$a_booking->user->image}}" width="80" style="border-radius:50%;">
+                                    @endif                
+                                </td>
                                 <td>{{$a_booking->date}}</td>
                                 <td>{{$a_booking->user->name}}</td>
                                 <td>{{$a_booking->user->email}}</td>
