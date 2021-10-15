@@ -16,10 +16,12 @@ class ClientListController extends Controller
         // if date from form return appoitnments for that date
         if ($request->date) {
             $bookings = Booking::latest()->where('date', $request->date)->get();
+            // dd($bookings);
             return view('admin.clientlist.index', compact('bookings'));
         }
         // otherwise display all
         $bookings = Booking::latest()->paginate(30);
+        // dd($bookings);
         return view('admin.clientlist.index', compact('bookings'));
     }
 

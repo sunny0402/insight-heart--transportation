@@ -46,12 +46,9 @@
                                 <th scope="row">{{$key+1}}</th>
                                 <td>
 
-                                    <!-- if no image saved in users table -->
-                                    @if(is_null($a_booking->user->image))
-                                    <img src="images/pPmrx54SH8qqrdQJYALpOuswkuwimLpY2sZaRtlH.png" width="80">
-                                    <!-- if no image in correct director -->
-                                    @elseif( ! file_exists(public_path("/profile/{{$a_booking->user->image}}")))
-                                    <!-- default image -->
+                                    <!-- if no image saved in users table or if no image in correct directory-->
+                                    @if(is_null($a_booking->user->image) ||
+                                    ! file_exists(public_path("/profile/{{$a_booking->user->image}}")))
                                     <img src="images/pPmrx54SH8qqrdQJYALpOuswkuwimLpY2sZaRtlH.png" width="80">
                                     @else
                                      <!-- images uploaded when creating profile go to /profile review ProfileController  -->
@@ -79,7 +76,8 @@
                     </table>
 
                 </div>
-                {{$bookings->links()}}
+                  {{$bookings->links()}}
+                
             </div>
         </div>
     </div>
