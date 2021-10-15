@@ -45,10 +45,11 @@
                                 <!-- fromBookingToUserTable and user relationships defined in Booking model, Booking.php  -->
                                 <th scope="row">{{$key+1}}</th>
                                 <td>
-                                    @if(!$a_booking->user->image)
+                                    @if(is_null($a_booking->user->image))
                                     <!-- default image -->
                                     <img src="images/pPmrx54SH8qqrdQJYALpOuswkuwimLpY2sZaRtlH.png" width="80">
                                     @else
+                                     <!-- images uploaded when creating profile go to /profile review ProfileController  -->
                                     <img src="/profile/{{$a_booking->user->image}}" width="80" style="border-radius:50%;">
                                     @endif                
                                 </td>
