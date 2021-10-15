@@ -574,3 +574,8 @@ php artisan make:mail CancelAppointmentMail
 Client should be able to specify pickup location and drop off point.
 
 SMS notification once driver is close.
+
+
+## Debugging Notes
+
+When images are uploaded when creating a profile they should be in /profile.
