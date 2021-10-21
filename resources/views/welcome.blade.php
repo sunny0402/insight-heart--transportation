@@ -4,28 +4,26 @@
 <div class="container-fluid">
 
     <!-- InsighHeart Logo -->
-    <div class="card">
-        <div class="card-body">
-            <div class="row d-flex flex-row justify-content-center">
-                <div class="col-md-6">
-                    <img src="/banner/InsightHeartGo.jpg" class="img-fluid" 
-                    style="border-radius:10px; object-fit: cover; ">
-                </div>
-            </div>
-        </div>
-    </div>
-   <!-- InsighHeart Logo -->
 
+        <div class="row d-flex flex-row justify-content-center ig-go-container">
+            <div class="col-md-6">
+                <img src="/banner/InsightHeartGo.jpg" class="img-fluid" 
+                    style="border-radius:10px; object-fit: cover; ">
+            </div>
+         </div>
+   
+
+   <!-- InsighHeart Logo -->
 <!-- About InsighHeartGO -->
-        <div class="card text-white bg-primary mb-3" 
+<div class="card text-white bg-dark mb-3" 
         style="border-radius:10px; margin: 10px 0 10px 0; ">
                 <div class="card-header d-flex flex-row justify-content-center">
-                    <h3 class="text-white"
+                    <h3 class="text-white text-header-three"
                     >Community Transportation</h3>
                 </div>
                 <div class="card-body">
                     <div class="row">
-                        <div class="col-md-6 d-flex flex-column justify-content-center">
+                        <div class="col-md-6 d-flex flex-column " style="lineHeight: 1.5rem">
                             <p>With our InsightHeart Foundation Transportation Program, we are driving Seniors and Cancer Patients to their local scheduled medical appointments for FREE.</p>
 
                             <p>Our drivers are provided by a combination of volunteers and partner agency drivers.  Our driver assistance includes support in and out of the vehicle, help handling groceries, and some mobility equipment. Escorts are recommended at no cost. 
@@ -45,9 +43,8 @@
 
 
 <!-- Login/Register -->
-    <div class="card">
-        <div class="card-body">
-            <div class="row d-flex flex-row justify-content-center">
+ 
+            <div class="row d-flex flex-row justify-content-center" style="paddingTop: 2rem ; paddingBottom: 2rem">
                             <a href="{{url('/register')}}">
                                 <button type="button" 
                                 class="btn btn-success btn-lg"
@@ -79,15 +76,13 @@
                                 Login</button>
                             </a>       
             </div>           
-        </div>
-    </div>
+     
 <!-- end Login/Register -->
     
     
     <!-- Find Driver/Schedule Ride -->
     <form action="{{url('/')}}" method="GET">@csrf
-        <div class="card">
-            <div class="card-body">
+
                     <div class="row d-flex flex-column justify-content-center align-items-center ">
                             <input type="text" name="date" 
                             class="form-control" id="datepicker"
@@ -110,8 +105,7 @@
                                 box-shadow: 0 0.1rem 0.8rem rgba(0, 0, 0, 0.4);"
                                 >Find Drivers</button>
                     </div>
-            </div>
-        </div>
+        
     </form>
 <!-- END Find Driver/Schedule Ride -->
 
@@ -165,4 +159,8 @@
 
 <!-- container-fluid closing div -->
 </div>
+
+<style type="text/css">
+  
+</style>
 @endsection
