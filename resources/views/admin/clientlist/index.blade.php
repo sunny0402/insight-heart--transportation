@@ -41,29 +41,20 @@
 
                         <tbody>
                             @forelse($bookings as $key=>$a_booking)
+                            {{-- <p>{{public_path('/profile/'.$a_booking->user->image) }}</p> --}}
                             <tr>
                                 <!-- fromBookingToUserTable and user relationships defined in Booking model, Booking.php  -->
                                 <th scope="row">{{$key+1}}</th>
                                 <td>
-
-                                    <!-- if no image saved in users table or if no image in correct directory-->
-                                    {{-- @if(is_null($a_booking->user->image) ||
-                                    ! file_exists(public_path("/profile/{{$a_booking->user->image}}")))
-                                    <img src="images/pPmrx54SH8qqrdQJYALpOuswkuwimLpY2sZaRtlH.png" width="80">
-                                    @else
-                                     <!-- images uploaded when creating profile go to /profile review ProfileController  -->
-                                    <img src="/profile/{{$a_booking->user->image}}" width="80" style="border-radius:50%;">
-                                    @endif
-                                       <!-- my edit  -->             --}}
                                     <!-- images uploaded when creating profile go to /profile review ProfileController  -->
-                                    <!-- if user image exists and is saved in correct directory-->
-                                    @if(public_path("/profile/{{$a_booking->user->image}}")  )
-                                    <img src="/profile/{{$a_booking->user->image}}" width="80" style="border-radius:50%;">
                                     <!-- if no image saved in users table -->
-                                    @elseif(is_null($a_booking->user->image) )
+                                    @if(is_null($a_booking->user->image) )
                                         <img src="images/pPmrx54SH8qqrdQJYALpOuswkuwimLpY2sZaRtlH.png" width="80">
+                                    @elseif(public_path("/profile/{{$a_booking->user->image}}") )
+                                    {{-- example, if image at: public/images/myimage.jpg --}}
+                                    {{-- <img src="{{url('/images/myimage.jpg')}}" alt="Image"/> --}}
+                                        <img src="{{url('/profile/'.$a_booking->user->image)}}" width="80" style="border-radius:50%;">
                                     @else
-
                                         <img src="images/pPmrx54SH8qqrdQJYALpOuswkuwimLpY2sZaRtlH.png" width="80">
                                     @endif  
                                 </td>
