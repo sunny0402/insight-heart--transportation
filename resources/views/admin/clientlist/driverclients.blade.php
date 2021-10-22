@@ -7,7 +7,7 @@
             <div class="card">
                 <!-- your appointments -->
                 <div class="card-header">Booked Appointments: {{$bookings->count()}} </div>
-                <form action="{{route('client')}}" method="GET">
+                <form action="{{route('driverclients')}}" method="GET">
                     <div class="card-header">
 
                         Filter:
@@ -45,27 +45,17 @@
                                 <!-- fromBookingToUserTable and user relationships defined in Booking model, Booking.php  -->
                                 <th scope="row">{{$key+1}}</th>
                                 <td>
-
-                                    <!-- if no image saved in users table or if no image in correct directory-->
-                                    {{-- @if(is_null($a_booking->user->image) ||
-                                    ! file_exists(public_path("/profile/{{$a_booking->user->image}}")))
-                                    <img src="images/pPmrx54SH8qqrdQJYALpOuswkuwimLpY2sZaRtlH.png" width="80">
-                                    @else
-                                     <!-- images uploaded when creating profile go to /profile review ProfileController  -->
-                                    <img src="/profile/{{$a_booking->user->image}}" width="80" style="border-radius:50%;">
-                                    @endif
-                                       <!-- my edit  -->             --}}
                                     <!-- images uploaded when creating profile go to /profile review ProfileController  -->
                                     <!-- if user image exists and is saved in correct directory-->
                                     @if(public_path("/profile/{{$a_booking->user->image}}")  )
-                                    <img src="/profile/{{$a_booking->user->image}}" width="80" style="border-radius:50%;">
+                                        <img src="/profile/{{$a_booking->user->image}}" width="80" style="border-radius:50%;">
                                     <!-- if no image saved in users table -->
                                     @elseif(is_null($a_booking->user->image) )
                                         <img src="images/pPmrx54SH8qqrdQJYALpOuswkuwimLpY2sZaRtlH.png" width="80">
                                     @else
 
                                         <img src="images/pPmrx54SH8qqrdQJYALpOuswkuwimLpY2sZaRtlH.png" width="80">
-                                    @endif  
+                                    @endif                
                                 </td>
                                 <td>{{$a_booking->date}}</td>
                                 <td>{{$a_booking->user->name}}</td>

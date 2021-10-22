@@ -33,4 +33,28 @@ class ClientListController extends Controller
         $booking->save();
         return redirect()->back();
     }
+
+    public function viewDriverClients(Request $request)
+    {
+        date_default_timezone_set('America/Toronto');
+        // to get only trips booked for today ...
+        //$bookings = Booking::latest()->where('date', date('Y-m-d'))->get();
+
+        // if date from form return appoitnments for that date
+        if ($request->date) {
+            $whereCondition = [
+                ['date', '=', $request->date],
+                ['driver_id', '=', auth()->user()->id]
+            ];
+            // $bookings = Booking::latest()->where('date', '=', $request->date)
+            //     ->where('driver_id', '=', auth()->user()->id)->get();
+            $bookings = Booking::latest()->where($whereCondition)->get();
+            // dd($bookings);
+            return view('admin.clientlist.index', compact('bookings'));
+        }
+        // otherwise display all
+        $bookings = Booking::latest()->where('driver_id', auth()->user()->id)->paginate(30);
+        // dd($bookings);
+        return view('admin.clientlist.driverclients', compact('bookings'));
+    }
 }

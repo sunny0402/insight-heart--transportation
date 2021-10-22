@@ -579,3 +579,8 @@ SMS notification once driver is close.
 ## Debugging Notes
 
 When images are uploaded when creating a profile they should be in /profile.
+
+debug to screen
+driverclients.blade.php
+Is user photo saved to profile directory?
+<p>{{ file_exists(public_path('/profile/'.$a_booking->user->image))}}</p>
