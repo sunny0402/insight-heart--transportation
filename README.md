@@ -584,3 +584,26 @@ debug to screen
 driverclients.blade.php
 Is user photo saved to profile directory?
 <p>{{ file_exists(public_path('/profile/'.$a_booking->user->image))}}</p>
+
+
+## DB Queries
+https://www.scratchcode.io/laravel-multiple-where-conditions-with-example/
+https://www.scratchcode.io/how-to-print-or-debug-query-in-laravel/
+
+https://laravel.com/docs/8.x/queries
+The query builder also provides a convenient method to "union" two or more queries together. For example, you may create an initial query and use the union method to union it with more queries:
+
+use Illuminate\Support\Facades\DB;
+
+$first = DB::table('users')
+            ->whereNull('first_name');
+
+$users = DB::table('users')
+            ->whereNull('last_name')
+            ->union($first)
+            ->get();
+
+## Debug 
+Null objects 
+error:
+“Trying to get property ‘id’ of non-object”

@@ -48,7 +48,7 @@
                                 <td>
                                     <!-- images uploaded when creating profile go to /profile review ProfileController  -->
                                     <!-- if no image saved in users table -->
-                                    @if(is_null($a_booking->user->image) )
+                                    @if(! isset($a_booking->user->image) )
                                         <img src="images/pPmrx54SH8qqrdQJYALpOuswkuwimLpY2sZaRtlH.png" width="80">
                                     @elseif(public_path("/profile/{{$a_booking->user->image}}") )
                                     {{-- example, if image at: public/images/myimage.jpg --}}
@@ -56,7 +56,7 @@
                                         <img src="{{url('/profile/'.$a_booking->user->image)}}" width="80" style="border-radius:50%;">
                                     @else
                                         <img src="images/pPmrx54SH8qqrdQJYALpOuswkuwimLpY2sZaRtlH.png" width="80">
-                                    @endif  
+                                    @endif 
                                 </td>
                                 <td>{{$a_booking->date}}</td>
                                 <td>{{$a_booking->user->name}}</td>
