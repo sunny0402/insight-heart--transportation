@@ -16,12 +16,21 @@ class ClientListController extends Controller
         // if date from form return appoitnments for that date
         if ($request->date) {
             $bookings = Booking::latest()->where('date', $request->date)->get();
-            // dd($bookings);
+            // $filtered_bookings = $bookings->reject(function ($key,$value) {
+            //     $key === 'driver_id' });
+            foreach ($bookings as $a_booking) {
+                echo ($a_booking);
+            }
+            //dd($bookings);
             return view('admin.clientlist.index', compact('bookings'));
         }
         // otherwise display all
         $bookings = Booking::latest()->paginate(30);
-        // dd($bookings);
+        foreach ($bookings as $a_booking) {
+            echo (var_dump($a_booking->user));
+        }
+        die();
+        //dd($bookings);
         return view('admin.clientlist.index', compact('bookings'));
     }
 
