@@ -79,7 +79,7 @@
                     </table>
 
                 </div>
-                  {{-- pagination --}}
+                  {{-- TODO: pagination --}}
                   {{-- {{$bookings->links()}} --}}
                 
             </div>

@@ -603,7 +603,26 @@ $users = DB::table('users')
             ->union($first)
             ->get();
 
-## Debug 
+## Debug Null Object
+https://medium.com/@maxalmonte14/working-with-null-objects-in-laravel-b24d7ccf03dc
 Null objects 
 error:
 “Trying to get property ‘id’ of non-object”
+php artisan make:model MissingUser
+
+
+## Git Branches
+git branch test_null_object
+git checkout test_null_object
+git add .
+git commit -m "null object edits to test_null_objects branch"
+git checkout main
+git log to track changes
+go into main branch where want to merge into
+the git merge <branch name>
+:wq to save commit message
+git push only pushes current active branch
+to push the test_null_objects branch
+git checkout test_null_objects
+git push --set-upstream origin test_null_objects
+To delete a branch git bracnh -d <branch name>
