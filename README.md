@@ -626,3 +626,18 @@ to push the test_null_objects branch
 git checkout test_null_objects
 git push --set-upstream origin test_null_objects
 To delete a branch git bracnh -d <branch name>
+
+## Query Builder
+https://laravel.com/docs/8.x/queries
+
+The get method returns an Illuminate\Support\Collection instance containing the results of the query where each result is an instance of the PHP stdClass object. Y
+
+soget reutrns a collection. 
+
+Collection methods.
+https://laravel.com/docs/8.x/collections#available-methods
+
+
+## TODO:
+should images be stored in public folder?
+https://biplabsinha345.medium.com/how-to-upload-image-to-storage-folder-in-laravel-8-b796f04ab964

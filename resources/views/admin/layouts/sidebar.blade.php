@@ -50,9 +50,15 @@
 
                     @if(auth()->check() && auth()->user()->role->name === 'admin')
                     <div class="nav-item has-sub">
-                        <a href="javascript:void(0)"><i class="ik ik-layers"></i><span> Scheduled Trips</span> <span class="badge badge-danger">2</span></a>
+                        <a href="javascript:void(0)"><i class="ik ik-layers"></i><span> Scheduled Trips</span></a>
                         <div class="submenu-content">
                             <a href="{{route('client')}}" class="menu-item">View</a>
+                        </div>
+                    </div>
+                    <div class="nav-item has-sub">
+                        <a href="javascript:void(0)"><i class="ik ik-layers"></i><span> Registered Clients</span></a>
+                        <div class="submenu-content">
+                            <a href="{{route('all.clients')}}" class="menu-item">View</a>
                         </div>
                     </div>
                     @endif

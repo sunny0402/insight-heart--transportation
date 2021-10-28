@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Booking;
+use App\Models\User;
 
 class ClientListController extends Controller
 {
@@ -62,8 +63,35 @@ class ClientListController extends Controller
             return view('admin.clientlist.index', compact('bookings'));
         }
         // otherwise display all
-        $bookings = Booking::latest()->where('driver_id', auth()->user()->id)->paginate(30);
+        $bookings = Booking::latest()->where('driver_id', auth()->user()->id)->paginate(15);
         // dd($bookings);
         return view('admin.clientlist.driverclients', compact('bookings'));
+    }
+
+    // allow admin to view all clients who are registered in the system
+    public function allClients(Request $request)
+    {
+        date_default_timezone_set('America/Toronto');
+
+        // $res = Product::select("name")
+        // ->where("name","LIKE","%{$request->term}%")
+        // ->get();
+
+        // if serach term provided by form return user which matches that name
+        // where usually AND orwhere
+        if ($request->searchTerm) {
+            $the_user = User::where('role_id', 3)->where("name", "LIKE", "%{$request->searchTerm}%")
+                ->paginate(15);
+            // foreach ($the_user as $a_user) {
+            //     var_dump($a_user);
+            // }
+            // die();
+            //dd($bookings);
+            return view('admin.clientlist.allsystemclients', compact('the_user'));
+        }
+        // otherwise display all
+        $all_users = User::where('role_id', 3)->paginate(15);
+
+        return view('admin.clientlist.allsystemclients', compact('all_users'));
     }
 }
