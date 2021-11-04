@@ -10,6 +10,8 @@ use App\Models\Booking;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\AppointmentMail;
 use App\Mail\CancelAppointmentMail;
+use App\Mail\NotifyDriverMail;
+use App\Models\Location;
 
 class FrontendController extends Controller
 {
@@ -80,6 +82,13 @@ class FrontendController extends Controller
             $request->appointmentId
         )->where('time', $request->time)->update(['status' => 1]);
 
+        //TODO: store the pick up and drop off location
+        Location::create([
+            'pick_up' => $request->pickUpLocation,
+            'drop_off' => $request->dropOffLocation,
+            'appointmentNum' =>  $request->appointmentId
+        ]);
+
         // send email notification to currently logged in user
         $driver_info = User::where('id', $request->driverId)->first();
         $mailData = [
@@ -94,6 +103,25 @@ class FrontendController extends Controller
             Mail::to(auth()->user()->email)->send(new AppointmentMail($mailData));
         } catch (\Exception $e) {
             //
+        }
+
+        // TODO: send email notification to driver
+        // send email notification to currently logged in user
+        $client_info = User::where('id', auth()->user()->id)->first();
+        $mailDataDriver = [
+            'client_name' => $client_info->name,
+            'client_phone' => $client_info->phone_number,
+            'time' => $request->time,
+            'date' => $request->date,
+            'pick_up_location' => $request->pickUpLocation,
+            'drop_off_location' => $request->dropOffLocation,
+            'driver_name' => $driver_info->name
+        ];
+
+        try {
+            Mail::to($driver_info->email)->send(new NotifyDriverMail($mailDataDriver));
+        } catch (\Exception $e) {
+            echo ("email not send to driver");
         }
 
 
@@ -135,6 +163,8 @@ class FrontendController extends Controller
             'appointment_id',
             $request->appointment
         )->where('time', $request->time)->update(['status' => 0]);
+
+
 
         //send email notification
 

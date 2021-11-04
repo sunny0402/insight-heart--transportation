@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+
 <div class="container">
     <div class="row">
         <div class="col-md-3">
@@ -10,10 +11,10 @@
                     <img src="{{asset('images')}}/{{$user->image}}" width="150px" style="border-radius: 50%;">
                     <br>
                     <br>
-                    <p class="lead">Name:{{ucfirst($user->name)}}</p>
-                    <p class="lead">Region:{{ucfirst($user->region)}}</p>
+                    <p class="lead">Name: {{ucfirst($user->name)}}</p>
+                    <p class="lead">Region: {{ucfirst($user->region)}}</p>
                     <p class="lead">Vehicle: {{ucfirst($user->vehicle_info)}}</p>
-                    <p class="lead">Description:{{ucfirst($user->description)}}</p>
+                    <p class="lead">Description: {{ucfirst($user->description)}}</p>
                 </div>
             </div>
         </div>
@@ -58,6 +59,18 @@
                     </div>
                 </div>
                 <div class="card-footer">
+                    <label for="pickUp">Pick Up Location</label>
+                    <input type="text" name="pickUpLocation" 
+                    class="form-control query" id="query-0"><br>
+
+                    {{-- <p id="address-details"></p> --}}
+
+                    <label for="dropOff">Destination</label>
+                    <input 
+                    type="text" name="dropOffLocation"
+                    class="form-control query" id="query-1"><br>
+                    
+
                     @if(Auth::check())
                     <button type="submit" class="btn btn-success" style="width:100%;">Book driver</button>
                     @else

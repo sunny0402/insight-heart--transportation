@@ -31,6 +31,41 @@
     <link rel="stylesheet" href="{{asset('template/dist/css/theme.min.css')}}">
     <!-- style for datepicker -->
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+
+  {{-- script google maps autocomplete --}}
+  <script>
+      let autocomplete;
+      function initAutocomplete(){
+        var inputs = document.getElementsByClassName('query');
+        var options = {
+                    types: ['address'],
+                    componentRestrictions: {'country':['CA']},
+                    fields: ['geometry','name']};
+        
+        //var autocomplete_query_list = [];
+          
+        for(var i=0; i < inputs.length; i++){
+            autocomplete = new google.maps.places.Autocomplete(inputs[i],options);
+            autocomplete.inputId = inputs[i].id;
+            autocomplete.addListener('place_changed', onPlaceChanged);
+            //autocomplete_query_list.push(autocomplete);
+        }
+    }
+
+      function onPlaceChanged(){
+          //console.log(this.inputId);
+          var place = this.getPlace();
+          if(! place.geometry){
+              //user did not select prediction; reset the input field
+              document.getElementById(`${this.inputId}`).placeholder = 'Enter an address';
+          }
+          else{
+              //display details about the valid place
+              //document.getElementById('address-details').innerHTML = place.name;
+          }
+      }
+  </script>
 </head>
 
 <body>
@@ -117,6 +152,7 @@
             });
         });
     </script>
+    
     <style type="text/css">
         body {
             background: white;
@@ -177,7 +213,8 @@
         }
     </style>
 
-
+{{-- google maps address autocomplete ued in apppointment.blade.php --}}
+<script src="https://maps.googleapis.com/maps/api/js?key={{env('GOOGLE_API_KEY')}}&libraries=places&callback=initAutocomplete" async defer></script>
 </body>
 
 </html>
