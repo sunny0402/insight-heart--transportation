@@ -1,21 +1,15 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container-fluid">
+<div class="">
 
     <!-- InsighHeart Logo -->
 
-        <div class="row d-flex flex-row justify-content-center ig-go-container">
-            <div class="col-md-6">
-                <img src="/banner/InsightHeartGo.jpg" class="img-fluid" 
-                    style="border-radius:10px; object-fit: cover; ">
-            </div>
-         </div>
    
 
    <!-- InsighHeart Logo -->
 <!-- About InsighHeartGO -->
-<div class="card text-white bg-dark mb-3" 
+{{-- <div class="card text-white bg-dark mb-3" 
         style="border-radius:10px; margin: 10px 0 10px 0; ">
                 <div class="card-header d-flex flex-row justify-content-center">
                     <h3 class="text-white text-header-three"
@@ -38,8 +32,46 @@
                         </div>
                     </div>
                 </div>
-        </div>
+        </div> --}}
 <!-- end About InsighHeartGO -->
+<div class="jumbotron jumbotron-fluid hero-section">
+    <div class="container">
+      <h3>Driving Seniors and Cancer Patients to their medical appointments for FREE.</h3>
+      <a class="primary-action-btn" href="{{ route('register') }}">{{ __('BOOK FOR FREE') }}</a>
+    </div>
+  </div>
+
+
+<div class=" text-black mb-3" 
+        style="border-radius:10px; margin: 10px 0 10px 0; ">
+                <div class="container">
+                    <div class="row ">
+                        <div class="col-md-6 d-flex flex-row justify-content-center">
+                            <img src="/banner/backpacks_4_smiles_aug2021_6.jpg" class="img-fluid" 
+                            style="
+                            width: 100%;
+                            height: 350px;
+                            border-radius:10px; 
+                            object-fit: cover; ">
+                        </div>
+
+                        <div class="col-md-6 d-flex flex-column community-transportation" style="lineHeight: 1.5rem">
+                            <h4>Community Transportation</h4>
+
+                            <div class="comm-trans-info">
+                                <p>With our InsightHeart Foundation Transportation Program, we are driving Seniors and Cancer Patients to their local scheduled medical appointments for FREE.</p>
+
+                                <p>Our drivers are provided by a combination of volunteers and partner agency drivers.  Our driver assistance includes support in and out of the vehicle, help handling groceries, and some mobility equipment. Escorts are recommended at no cost. 
+                                </p>
+                            </div>
+
+                            <a class="primary-action-btn" href="{{ route('register') }}">{{ __('BOOK FOR FREE') }}</a>
+                        </div>
+                    
+                    </div>
+                </div>
+        </div>
+
 
 
 <!-- Login/Register -->

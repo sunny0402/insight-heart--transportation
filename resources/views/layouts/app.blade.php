@@ -27,18 +27,21 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="{{asset('template/dist/css/theme.min.css')}}">
     <!-- style for datepicker -->
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link href="{{ asset('css/home.css') }}" rel="stylesheet" type="text/css">
+
 </head>
 
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-light bg-white margin-1rem">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'HeartsOnWheels') }}
+                    <img src="/images/ihg-logo.svg" class="ihg-logo" />
+
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -63,13 +66,13 @@
                         @guest
                         @if (Route::has('login'))
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                            <a class="nav-link secondary-link" href="{{ route('login') }}">{{ __('LOGIN') }}</a>
                         </li>
                         @endif
 
                         @if (Route::has('register'))
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                            <a class="nav-link primary-action-btn" href="{{ route('register') }}">{{ __('BOOK FOR FREE') }}</a>
                         </li>
                         @endif
                         @else
@@ -104,6 +107,12 @@
             @yield('content')
         </main>
     </div>
+
+
+
+
+
+
     <!-- jquery datepicker -->
     <script>
         // format date same as in database
