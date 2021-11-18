@@ -47,12 +47,7 @@
                 <div class="container">
                     <div class="row ">
                         <div class="col-md-6 d-flex flex-row justify-content-center">
-                            <img src="/banner/backpacks_4_smiles_aug2021_6.jpg" class="img-fluid" 
-                            style="
-                            width: 100%;
-                            height: 350px;
-                            border-radius:10px; 
-                            object-fit: cover; ">
+                            <img src="/banner/backpacks_4_smiles_aug2021_6.jpg" class="community-transportation-image" >
                         </div>
 
                         <div class="col-md-6 d-flex flex-column community-transportation" style="lineHeight: 1.5rem">
@@ -75,7 +70,7 @@
 
 
 <!-- Login/Register -->
- 
+{{--  
             <div class="row d-flex flex-row justify-content-center" style="paddingTop: 2rem ; paddingBottom: 2rem">
                             <a href="{{url('/register')}}">
                                 <button type="button" 
@@ -108,7 +103,10 @@
                                 Login</button>
                             </a>       
             </div>           
-     
+      --}}
+
+      <br><br><br>
+
 <!-- end Login/Register -->
     
     

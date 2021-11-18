@@ -76,6 +76,13 @@
     font-size: 0.8rem;
 }
 
+.community-transportation-image {
+    width: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    height: 350px;
+}
+
 @media only screen and (max-width: 768px) {
     .community-transportation {
         padding-top: 2rem;
@@ -89,5 +96,10 @@
         width: 12rem;
         padding-left: 0rem;
         margin-top: 1rem;
+    }
+
+    .community-transportation-image {
+        margin-right: 2rem;
+        height: 100%;
     }
 }
