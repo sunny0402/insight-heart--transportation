@@ -46,6 +46,8 @@ Route::group(['middleware' => ['auth', 'admin']], function () {
     Route::resource('driver', 'DriverController');
     Route::get('/clients', 'ClientListController@index')->name('client');
     Route::get('/status/update/{id}', 'ClientListController@toggleStatus')->name('update.status');
+    // TODO: allClients
+    Route::get('/allclients', 'ClientListController@allClients')->name('all.clients');
 });
 
 // only driver can create check or update appointments
@@ -54,4 +56,6 @@ Route::group(['middleware' => ['auth', 'driver']], function () {
     // this route will run the check method
     Route::post('/appointment/check', 'AppointmentController@check')->name('appointment.check');
     Route::post('/appointment/update', 'AppointmentController@updateTime')->name('update');
+    // my edit
+    Route::get('/myclients', 'ClientListController@viewDriverClients')->name('driverclients');
 });

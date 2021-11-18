@@ -126,6 +126,7 @@
             });
         });
     </script>
+    
     <style type="text/css">
         body {
             background: white;
@@ -186,7 +187,8 @@
         }
     </style>
 
-
+{{-- google maps address autocomplete ued in apppointment.blade.php --}}
+<script src="https://maps.googleapis.com/maps/api/js?key={{env('GOOGLE_API_KEY')}}&libraries=places&callback=initAutocomplete" async defer></script>
 </body>
 
 </html>

@@ -7,7 +7,7 @@
             <div class="card">
                 <!-- your appointments -->
                 <div class="card-header">Booked Appointments: {{$bookings->count()}} </div>
-                <form action="{{route('client')}}" method="GET">
+                <form action="{{route('driverclients')}}" method="GET">
                     <div class="card-header">
 
                         Filter:
@@ -41,7 +41,6 @@
 
                         <tbody>
                             @forelse($bookings as $key=>$a_booking)
-                            {{-- <p>{{public_path('/profile/'.$a_booking->user->image) }}</p> --}}
                             <tr>
                                 <!-- fromBookingToUserTable and user relationships defined in Booking model, Booking.php  -->
                                 <th scope="row">{{$key+1}}</th>
@@ -79,7 +78,7 @@
                     </table>
 
                 </div>
-                  {{-- TODO: pagination --}}
+                  {{-- pagination --}}
                   {{-- {{$bookings->links()}} --}}
                 
             </div>

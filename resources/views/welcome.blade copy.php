@@ -17,8 +17,8 @@
         </div>
     </div>
     <hr>
-    
-      <!-- image slider -->
+
+    <!-- image slider -->
     <div class="card">
         <div class="card-body">
             <div class="card-header">
@@ -29,31 +29,31 @@
                     <div class="col-md-6">
                         <div id="welcome-page-slider" class="carousel slide" data-ride="carousel">
                             <div class="carousel-inner">
-                              <div class="carousel-item active">
-                                <img class="img-fluid" src="/banner/logo-mark-version3.jpg" alt="First slide" style="border-radius:15px;">
-                              </div>
-                              <div class="carousel-item">
-                                <img class="img-fluid" src="/banner/logo-mark-version2.jpg" alt="Second slide" style="border-radius:15px; ">
-                              </div>
-                              <div class="carousel-item">
-                                <img class="img-fluid" src="/banner/logo-mark-version1.jpg" alt="Third slide" style="border-radius:15px;">
-                              </div>
-                              <div class="carousel-item">
-                                <img class="img-fluid" src="/banner/backpacks_4_smiles_aug2021_6.jpg" alt="Third slide" style="border-radius:15px;">
-                              </div>
-                              <div class="carousel-item">
-                                <img class="img-fluid" src="/banner/hope_food_drive_aug2021.jpg" alt="Third slide" style="border-radius:15px;">
-                              </div>
+                                <div class="carousel-item active">
+                                    <img class="img-fluid" src="/banner/logo-mark-version3.jpg" alt="First slide" style="border-radius:15px;">
+                                </div>
+                                <div class="carousel-item">
+                                    <img class="img-fluid" src="/banner/logo-mark-version2.jpg" alt="Second slide" style="border-radius:15px; ">
+                                </div>
+                                <div class="carousel-item">
+                                    <img class="img-fluid" src="/banner/logo-mark-version1.jpg" alt="Third slide" style="border-radius:15px;">
+                                </div>
+                                <div class="carousel-item">
+                                    <img class="img-fluid" src="/banner/backpacks_4_smiles_aug2021_6.jpg" alt="Third slide" style="border-radius:15px;">
+                                </div>
+                                <div class="carousel-item">
+                                    <img class="img-fluid" src="/banner/hope_food_drive_aug2021.jpg" alt="Third slide" style="border-radius:15px;">
+                                </div>
                             </div>
                             <a class="carousel-control-prev" href="#welcome-page-slider" role="button" data-slide="prev">
                                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                                 <span class="sr-only">Previous</span>
-                              </a>
-                              <a class="carousel-control-next" href="#welcome-page-slider" role="button" data-slide="next">
+                            </a>
+                            <a class="carousel-control-next" href="#welcome-page-slider" role="button" data-slide="next">
                                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                                 <span class="sr-only">Next</span>
-                              </a>
-                          </div>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -73,7 +73,7 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-6">
-                            <p>Our drivers are provided by a combination of volunteers and partner agency drivers.  Our driver assistance includes support in and out of the vehicle, help handling groceries, and some mobility equipment. Escorts are recommended at no cost.</p>
+                            <p>Our drivers are provided by a combination of volunteers and partner agency drivers. Our driver assistance includes support in and out of the vehicle, help handling groceries, and some mobility equipment. Escorts are recommended at no cost.</p>
                         </div>
                     </div>
                     <div class="row">

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Storage;
 
 class DriverController extends Controller
 {
@@ -114,7 +115,14 @@ class DriverController extends Controller
         // see if image has been uploaded (see if it is in the request)
         if ($request->hasFile('image')) {
             $imageName = (new User)->userAvatar($request);
-            unlink(public_path('images/' . $user->image));
+            // if (file_exists(public_path('images\\' . $user->image))) {
+            if (file_exists('images/' . $user->image)) {
+
+                //dd(public_path('images/' . $user->image));
+                //C:\xampp\htdocs\booking-system\public\images\5TX1d7Za9S4XAh8KHillekrDqafguUBV1NRDGnjg.jpg
+                Storage::delete('images/' . $user->image);
+                unlink('images/' . $user->image);
+            }
         }
         // if new image has NOT been uploaded
         $data['image'] = $imageName;

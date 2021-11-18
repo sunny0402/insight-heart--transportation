@@ -7,8 +7,8 @@
                 </div>
                 <span class="text">InsightHeart Foundation Transportation System</span>
             </a>
-            <button type="button" class="nav-toggle"><i data-toggle="expanded" class="ik ik-toggle-right toggle-icon"></i></button>
-            <button id="sidebarClose" class="nav-close"><i class="ik ik-x"></i></button>
+            {{-- <button type="button" class="nav-toggle"><i data-toggle="expanded" class="ik ik-toggle-right toggle-icon"></i></button>
+            <button id="sidebarClose" class="nav-close"><i class="ik ik-x"></i></button> --}}
         </div>
 
         <div class="sidebar-content">
@@ -39,6 +39,8 @@
                         <div class="submenu-content">
                             <a href="{{route('appointment.create')}}" class="menu-item">Create new appointment</a>
                             <a href="{{route('appointment.index')}}" class="menu-item">Check or Update Availability</a>
+                            {{-- my edit --}}
+                            <a href="{{route('driverclients')}}" class="menu-item">View Scheduled Rides</a>
                         </div>
                     </div>
                     @endif
@@ -48,9 +50,15 @@
 
                     @if(auth()->check() && auth()->user()->role->name === 'admin')
                     <div class="nav-item has-sub">
-                        <a href="javascript:void(0)"><i class="ik ik-layers"></i><span> Scheduled Trips</span> <span class="badge badge-danger">2</span></a>
+                        <a href="javascript:void(0)"><i class="ik ik-layers"></i><span> Scheduled Trips</span></a>
                         <div class="submenu-content">
                             <a href="{{route('client')}}" class="menu-item">View</a>
+                        </div>
+                    </div>
+                    <div class="nav-item has-sub">
+                        <a href="javascript:void(0)"><i class="ik ik-layers"></i><span> Registered Clients</span></a>
+                        <div class="submenu-content">
+                            <a href="{{route('all.clients')}}" class="menu-item">View</a>
                         </div>
                     </div>
                     @endif
