@@ -27,53 +27,21 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="{{asset('template/dist/css/theme.min.css')}}">
     <!-- style for datepicker -->
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link href="{{ asset('css/home.css') }}" rel="stylesheet" type="text/css">
 
-
-  {{-- script google maps autocomplete --}}
-  <script>
-      let autocomplete;
-      function initAutocomplete(){
-        var inputs = document.getElementsByClassName('query');
-        var options = {
-                    types: ['address'],
-                    componentRestrictions: {'country':['CA']},
-                    fields: ['geometry','name']};
-        
-        //var autocomplete_query_list = [];
-          
-        for(var i=0; i < inputs.length; i++){
-            autocomplete = new google.maps.places.Autocomplete(inputs[i],options);
-            autocomplete.inputId = inputs[i].id;
-            autocomplete.addListener('place_changed', onPlaceChanged);
-            //autocomplete_query_list.push(autocomplete);
-        }
-    }
-
-      function onPlaceChanged(){
-          //console.log(this.inputId);
-          var place = this.getPlace();
-          if(! place.geometry){
-              //user did not select prediction; reset the input field
-              document.getElementById(`${this.inputId}`).placeholder = 'Enter an address';
-          }
-          else{
-              //display details about the valid place
-              //document.getElementById('address-details').innerHTML = place.name;
-          }
-      }
-  </script>
 </head>
 
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-light bg-white margin-1rem">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'HeartsOnWheels') }}
+                    <img src="/images/ihg-logo.svg" class="ihg-logo" />
+
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -98,13 +66,13 @@
                         @guest
                         @if (Route::has('login'))
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                            <a class="nav-link secondary-link" href="{{ route('login') }}">{{ __('LOGIN') }}</a>
                         </li>
                         @endif
 
                         @if (Route::has('register'))
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                            <a class="nav-link primary-action-btn" href="{{ route('register') }}">{{ __('BOOK FOR FREE') }}</a>
                         </li>
                         @endif
                         @else
@@ -139,6 +107,12 @@
             @yield('content')
         </main>
     </div>
+
+
+
+
+
+
     <!-- jquery datepicker -->
     <script>
         // format date same as in database
